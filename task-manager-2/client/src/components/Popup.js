@@ -1,5 +1,5 @@
 // import "../styles/task.scss";
-import "../styles/style.css";
+// import "../styles/style.css";
 import { useState } from "react";
 
 export default function Popup({popped,isPopped,addTask,updateTask,task,poppedstatus}) {

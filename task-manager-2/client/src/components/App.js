@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 // import "../styles/task.scss";
 import StatusLine from "./StatusLine";
 import Popup from "./Popup";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const API_BASE = "http://localhost:5000"
 
@@ -74,20 +76,20 @@ function App() {
     <div className="App">
       <h1>Task Manager by Jian Lin</h1>
       <h4>Your tasks</h4>
-      <div className="task">
-        <div className="col">  
-          <StatusLine
-            tasks={tasks}
-            addTask={addTask}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-            status="Backlog"
-          />
-        </div>
-        
-        <div className="col"></div>
-        <div className="col"></div>
+      <div className="btn btn-4 mb-4" onClick={() => isPopped(true)}>Add Task</div>
+      <div className="container-fluid task-box">
 
+        <div className="row">
+          <div className="col-sm-4">
+            <StatusLine
+              tasks={tasks}
+              addTask={addTask}
+              deleteTask={deleteTask}
+              updateTask={updateTask}
+              status="Backlog"
+            />
+          </div>
+          <div className="col-sm-4">
           <StatusLine
             tasks={tasks}
             addTask={addTask}
@@ -95,6 +97,8 @@ function App() {
             updateTask={updateTask}
             status="In Progress"
           />
+          </div>
+          <div className="col-sm-4">
           <StatusLine
             tasks={tasks}
             addTask={addTask}
@@ -102,14 +106,16 @@ function App() {
             updateTask={updateTask}
             status="Completed"
           />
+          </div>
 
 
-        <div className="button" onClick={() => isPopped(true)}>+</div>
-
+        </div>
+        
         <br></br>
         { popped ? (<div><Popup popped={popped} isPopped={isPopped} updateTask={updateTask} addTask={addTask} poppedstatus={true}/></div>): ''}
         </div>
     </div>
+    
   );
 }
 

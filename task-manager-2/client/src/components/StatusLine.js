@@ -28,9 +28,13 @@ export default function StatusLine(props) {
   }
 
   return (
-    <div className="statusLine">
-      <h3>{status}</h3>
-      {taskList}
+    <div className="row">
+      <div className="">   
+          <h3 className="text-center text-nowrap">{status}</h3>
+      </div> 
+      <div className="">
+          {taskList}
+      </div>  
 
     </div>
   );
