@@ -33,12 +33,15 @@ export default function Task(props) {
 
       <div className={`text-center badge fs-7 mt-2 ${taskUrgency}`}>{task.urgency}</div>
 
-      <div className="mt-3 text-center">
+      <div className="pt-3 container">
 
-          <div className="btn btn-4 me-5" onClick={() => isPopped(true)}>Edit</div>
+        <div className="row justify-content-center">
 
-          <div className="btn btn-4" onClick={() => deleteTask(task._id)}>Delete</div>
+          <div className="btn btn-4 col-sm-6 m-1" onClick={() => isPopped(true)}>Edit</div>
 
+          <div className="btn btn-4 col-sm-6 m-1" onClick={() => deleteTask(task._id)}>Delete</div>
+        
+        </div>
           { popped ? (<Popup popped={popped} isPopped={isPopped} addTask={addTask} updateTask={updateTask} task={task} poppedstatus={false}/>): ''}
           
       </div>

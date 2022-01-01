@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-// import "../styles/App.scss";
-// import "../styles/task.scss";
 import StatusLine from "./StatusLine";
 import Popup from "./Popup";
 import 'bootstrap/dist/css/bootstrap.min.css';

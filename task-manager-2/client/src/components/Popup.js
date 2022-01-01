@@ -1,6 +1,5 @@
-// import "../styles/task.scss";
-// import "../styles/style.css";
 import { useState } from "react";
+
 
 export default function Popup({popped,isPopped,addTask,updateTask,task,poppedstatus}) {
 
@@ -53,17 +52,14 @@ export default function Popup({popped,isPopped,addTask,updateTask,task,poppedsta
             }
     
 
+
         updateTask(task._id,EditedTask)
 
         isPopped(false)
 
         window.location.reload();
 
-
-
     }
-
-
 
     return (
         <div>
