@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { createTaskAction, updateNoteAction } from "../actions/taskActions"
+import { useDispatch } from 'react-redux'
 
-
-export default function Popup({popped,isPopped,addTask,updateTask,task,poppedstatus}) {
+export default function Popup({popped,isPopped,task,poppedstatus}) {
 
     if (task === undefined) {
 
@@ -12,6 +13,7 @@ export default function Popup({popped,isPopped,addTask,updateTask,task,poppedsta
             status: ""
         }
     }
+    const dispatch = useDispatch();
 
     const [description, setDescription] = useState(task.description);
     const [title, setTitle] = useState(task.title);
@@ -32,7 +34,7 @@ export default function Popup({popped,isPopped,addTask,updateTask,task,poppedsta
 
             }
     
-        addTask(newTasktoAdd)
+        dispatch(createTaskAction(newTasktoAdd))
 
         isPopped(false)
 
@@ -43,17 +45,17 @@ export default function Popup({popped,isPopped,addTask,updateTask,task,poppedsta
         event.preventDefault()
     
         const EditedTask = {
-
-              title: title,
-              description: description,
-              urgency: urgencyLevel,
-              status: statusLevel,
+            
+            id: task._id,
+            title: title,
+            description: description,
+            urgency: urgencyLevel,
+            status: statusLevel,
 
             }
     
 
-
-        updateTask(task._id,EditedTask)
+        dispatch(updateNoteAction(EditedTask))
 
         isPopped(false)
 
