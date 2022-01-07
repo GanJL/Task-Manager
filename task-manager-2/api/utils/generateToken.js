@@ -5,7 +5,7 @@ const generateToken = (id) => {
     return JWT.sign({
         id
     }, process.env.JWT_SECRET, {
-        expiresIn: 3000
+        expiresIn: 30000
     })
 };
 

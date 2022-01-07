@@ -8,14 +8,6 @@
   border: 1px solid $white;
   border-radius: 0.25rem;
 
-  &.collapsedTask {
-    .moveTask {
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-      padding: 0.3rem 0.5rem;
-    }
-  }
-
   form {
     display: flex;
     flex-direction: column;
@@ -83,19 +75,6 @@
         text-transform: uppercase;
         border-radius: 0.25rem;
 
-        .icon {
-          font-size: 1.25rem;
-          margin-right: 0.25rem;
-          transition: all 0.4s ease-in-out;
-
-          &.hide {
-            display: none;
-          }
-
-          &.show {
-            display: inline-block;
-          }
-        }
 
         input {
           display: none;

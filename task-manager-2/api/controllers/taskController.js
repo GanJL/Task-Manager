@@ -25,7 +25,7 @@ const createTask = asyncHandler(async (req, res) => {
     res.status(400).json({
         "errors": [
             {
-                "msg": "Invalid email or password",
+                "msg": "Error in task creation",
             }
         ]
     })

@@ -12,7 +12,7 @@ import Register from "./Register/Register";
 // import CreateNote from "./screens/SingleNote/CreateNote";
 // import { useState } from "react";
 // import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
-
+import "../styles/style.css";
 function App() {
   // const [search, setSearch] = useState("");
 

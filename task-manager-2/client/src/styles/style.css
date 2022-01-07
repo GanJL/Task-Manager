@@ -16,13 +16,15 @@
 	font-family: "Fira Sans", sans-serif;
 }
 
-body {
+html {
 	background-color: var(--dark);
 	color: var(--light);
 }
 
 .App {
-	padding: 32px;
+	padding: 50px;
+	background-color: var(--dark);
+	color: var(--light);
 }
 
 h1 {
@@ -39,9 +41,18 @@ h4 {
 	margin-bottom: 16px;
 }
 
+.popupHeader {
+	font-size: 25px;
+	color: var(--light);
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
+
 .task {
 
-	background-color: var(--dark-alt);
+	background-color:rgb(69, 69, 116);
 	padding: 16px;
 	border-radius: 16px;
 	align-items: center;
@@ -61,13 +72,6 @@ h4 {
 	margin-right: 16px;
 }
 
-.task .text {
-	font-size: 50px;
-}
-
-.todo.is-complete .text {
-	text-decoration: line-through;
-}
 
 .task .delete-task {
 	position: absolute;
@@ -92,7 +96,6 @@ h4 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	width: 64px;
 	height: 64px;
 	border-radius: 999px;
@@ -109,13 +112,13 @@ h4 {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-
 	width: 100%;
 	max-width: 400px;
 	background-color: var(--light);
 	padding: 32px;
 	border-radius: 16px;
 	box-shadow: 0px 4px 32px var(--dark);
+	background-color:rgb(52, 52, 100);
 }
 
 .closePopup {
@@ -136,17 +139,6 @@ h4 {
 	text-transform: uppercase;
 }
 
-.add-todo-input {
-	appearance: none;
-	outline: none;
-	border: none;
-	background-color: #FFF;
-	padding: 16px;
-	border-radius: 16px;
-	width: 100%;
-	box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
-	font-size: 20px;
-}
 
 .button {
 	padding: 16px 32px;
@@ -164,13 +156,9 @@ h4 {
 
 
 .task-style{
-
 	border-radius: 16px;
 	padding: 20px;
 	background-color: var(--light-alt);
-	font-size: 15px;
-
-
 }
 
 .wrapper {
@@ -178,46 +166,196 @@ h4 {
    }
 
 /* https://freefrontend.com/css-gradient-buttons/ */
-.btn {
+.newbtn {
 	flex: 1 1 auto;
 	padding: 10px;
 	text-align: center;
 	text-transform: uppercase;
 	transition: 0.5s;
 	background-size: 200% auto;
+	background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
 	color: white;
-	min-width: 70px;
+	min-width: 100px;
 	max-width: 100px;
-   /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
-	/* box-shadow: 0 0 20px #eee; */
 	border-radius: 999px;
 	font-size: 10px;
    }
   
-  /* Demo Stuff End -> */
+.newbtn:hover {
+background-position: right center; /* change the direction of the change here */
+transform: scale(1.05) 
+}
+
+.btn-1 {
+background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn-2 {
+background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.btn-3 {
+background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+
+.btn-4 {
+background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.btn-5 {
+background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+}
+
+form {
+	display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 0 0.25rem;
+}
+
+input {
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	color: white;
+	text-align: center;
+	resize: none;
+	display: flex;
+	font-family: "Kanit", sans-serif;
+}
+
+input:hover{
+	cursor: text;
+    border: 1px solid white;
+}
+
+input:focus {
+	outline: none;
+	border-color: #edc988;
+	color: #edc988;
+}
+
+input::placeholder{
+
+    color: white;
+	opacity: 0.5;
+
+}
+
+input + title {
+	margin-bottom: 0.5rem;
+	padding: 0.5rem 0;
+	width: 100%;
+	font-size: 1.1rem;
+}
+
+input + title:hover{
+	cursor: text;
+}
+
+.description {
+	margin-bottom: 0.5rem;
+	text-align: center;
+	padding: 0.5rem;
+	width: 100%;
+	font-size: 1.1rem;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	display: flex;
+	font-family: "Kanit", sans-serif;
+	color: white;
+	resize: none;
+}
+.description:hover {
+	cursor: text;
+	border: 1px solid white;
+}
+
+.description:focus{
+	outline: none;
+	border-color: #edc988;
+	color: #edc988;
+}
+
+.description::placeholder{
+
+    color: white;
+	opacity: 0.5;
+
+}
+
+.logout {
+	position: absolute;
+    top: 5px;
+    right: 5px;
+	margin: 10px;
+}
+.urgencyLabels {
+	margin-bottom: 1.5rem;
+	display: flex;
+	flex-direction: row;
+	font-size: 12px;
+}
+
+label {
+	color: #132743;
+	padding: 0.05rem 0.5rem;
+	margin: 0 0.25rem;
+	text-transform: uppercase;
+	border-radius: 0.25rem;
+}
+
+.displayNone {
+
+	display: none;
+
+}
+
+.low {
+	background-color: #9ad3bc;
+}
+
+.low:hover {
+	cursor: pointer;
+	opacity: 0.7;
+	border-color: #2ec1ac;
+	transform: scale(1.05) 
+}
+
+.medium {
+	background-color: #edf285;
+}
+
+.medium:hover {
+	cursor: pointer;
+	opacity: 0.7;
+	border-color: #edf285;
+	transform: scale(1.05) 
+}
+
+.high {
+	background-color: #ffa5a5;
+	vertical-align: middle;
+}
+
+.high:hover {
+	cursor: pointer;
+	opacity: 0.7;
+	border-color: #ffa5a5;
+	transform: scale(1.05) 
+}
+
+.selected {
+
+	opacity: 0.7;
+	transform: scale(1.05); 
+	display: inline-block;
+	font-weight: 700;
+}
+
+
+
+
   
-  /* <- Magic Stuff Start */
-  
-  .btn:hover {
-	background-position: right center; /* change the direction of the change here */
-  }
-  
-  .btn-1 {
-	background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
-  }
-  
-  .btn-2 {
-	background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
-  }
-  
-  .btn-3 {
-	background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
-  }
-  
-  .btn-4 {
-	background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
-  }
-  
-  .btn-5 {
-	background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
-  }

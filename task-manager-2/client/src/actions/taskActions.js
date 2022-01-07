@@ -30,7 +30,9 @@ export const listTasks = () => async (dispatch, getState) => {
             }).then(res => res.json())
 
             if (!data.errors){
+
                 dispatch({ type: TASK_LIST_SUCCESS, payload: data })
+                localStorage.setItem("tasks", JSON.stringify(data))
             }
         }
         catch (error)  {
@@ -50,22 +52,23 @@ export const createTaskAction = (title, description, urgency, status) => async (
       dispatch({
         type: TASK_CREATE_REQUEST,
       });
-  
       const {
         userLogin: { userInfo },
       } = getState();
-        
+      console.log(userInfo.token);
+
       const data  = await fetch(API_BASE + "/tasks/create", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}` 
         },
-        body: JSON.stringify({title, description, urgency, status})
+        body: JSON.stringify(title, description, urgency, status)
 
         }).then(res => res.json())
 
         if (!data.errors){
+          console.log("passed");
             dispatch({ type: TASK_CREATE_SUCCESS, payload: data })
         }
             
@@ -110,7 +113,7 @@ export const createTaskAction = (title, description, urgency, status) => async (
     }
   };
   
-  export const updateNoteAction = (id, title, description, urgency, status) => async (
+  export const updateTaskAction = (editedTask,id) => async (
     dispatch,
     getState
   ) => {
@@ -118,7 +121,7 @@ export const createTaskAction = (title, description, urgency, status) => async (
       dispatch({
         type: TASK_UPDATE_REQUEST,
       });
-  
+
       const {
         userLogin: { userInfo },
       } = getState();
@@ -129,7 +132,7 @@ export const createTaskAction = (title, description, urgency, status) => async (
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}` 
         },
-        body: JSON.stringify({title, description, urgency, status})
+        body: JSON.stringify(editedTask)
 
         }).then(res => res.json())
 

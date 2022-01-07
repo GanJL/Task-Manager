@@ -1,15 +1,20 @@
 import { useState } from "react";
 import Popup from "./Popup";
-import "../styles/task.scss";
+// import "../styles/task.scss";
 import { deleteTaskAction } from "../actions/taskActions"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import "../styles/style.css";
 
 
 export default function Task(props) {
 
-  const { task} = props;
+  const { task } = props;
+
+
   const [popped, isPopped] = useState(false);
+
   const dispatch = useDispatch();
+
   let taskUrgency
 
   if (task.urgency === 'Low'){
@@ -23,11 +28,11 @@ export default function Task(props) {
   }
 
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (event) => {
     
-    id.preventDefault();
+    event.preventDefault();
 
-    dispatch(deleteTaskAction(id))
+    dispatch(deleteTaskAction(task._id))
 
   }
 
@@ -49,9 +54,9 @@ export default function Task(props) {
 
         <div className="row justify-content-center">
 
-          <div className="btn btn-4 col-sm-6 m-1" onClick={() => isPopped(true)}>Edit</div>
+          <button className="newbtn btn-4 col-sm-3 m-1" onClick={() => isPopped(true)}>Edit</button>
 
-          <div className="btn btn-4 col-sm-6 m-1" onClick={() => handleDelete(task._id)}>Delete</div>
+          <button className="newbtn btn-4 col-sm-3 m-1" onClick={handleDelete}>Delete</button>
         
         </div>
           { popped ? (<Popup popped={popped} isPopped={isPopped} task={task} poppedstatus={false}/>): ''}

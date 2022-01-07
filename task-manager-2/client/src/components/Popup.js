@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { createTaskAction, updateNoteAction } from "../actions/taskActions"
+import { createTaskAction, updateTaskAction } from "../actions/taskActions"
 import { useDispatch } from 'react-redux'
+import "../styles/style.css";
+// import "../styles/task.scss"
 
 export default function Popup({popped,isPopped,task,poppedstatus}) {
 
@@ -14,6 +16,7 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
         }
     }
     const dispatch = useDispatch();
+
 
     const [description, setDescription] = useState(task.description);
     const [title, setTitle] = useState(task.title);
@@ -46,7 +49,6 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
     
         const EditedTask = {
             
-            id: task._id,
             title: title,
             description: description,
             urgency: urgencyLevel,
@@ -55,11 +57,11 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
             }
     
 
-        dispatch(updateNoteAction(EditedTask))
+        dispatch(updateTaskAction(EditedTask,task._id,))
 
         isPopped(false)
 
-        window.location.reload();
+        // window.location.reload();
 
     }
 
@@ -68,13 +70,12 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 		{popped ? (
             <div className="popup">
             <div className="closePopup" onClick={() => isPopped(false)}>X</div>
-            <div className="content">
-                <h3>Add Task</h3>
-                    <div className="task collapsedTask">
+                {poppedstatus ? <div className="popupHeader">Add Task</div> : <div className="popupHeader">Edit Task</div>}
+                    <div className="task">
                         <form>
                             <input
                                 type="text"
-                                className="title input"
+                                className="title input mb-2"
                                 name="title"
                                 placeholder="Enter Title"
                                 onChange={e => setTitle(e.target.value)}
@@ -90,34 +91,34 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
                                 value={description}
                             />
                             <div className="urgencyLabels">
-                                <label className="low">
-                                <input type="radio" onChange={e => setUrgencyLevel(e.target.value)} value="Low" /> Low
+                                <label className={`low ${urgencyLevel === "Low" ? "selected" : ""}`}>
+                                <input type="radio" onChange={e => setUrgencyLevel(e.target.value)} value="Low" className="displayNone"/> Low
                                 </label>
-                                <label className="medium">
-                                <input type="radio" onChange={e => setUrgencyLevel(e.target.value)} value="Medium" /> Medium
+                                <label className={`medium ${urgencyLevel === "Medium" ? "selected" : ""}`}>
+                                <input type="radio" onChange={e => setUrgencyLevel(e.target.value)} value="Medium" className="displayNone"/> Medium
                                 </label>
-                                <label className="high">
-                                <input type="radio" onChange={e => setUrgencyLevel(e.target.value)} value="High" /> High
+                                <label className={`high ${urgencyLevel === "High" ? "selected" : ""}`}>
+                                <input type="radio" onChange={e => setUrgencyLevel(e.target.value)} value="High" className="displayNone"/> High
                                 </label>
                             </div>
                             <div className="urgencyLabels">
-                                <label className="high">
-                                <input type="radio" onChange={e => setStatusLevel(e.target.value)} value="Backlog" /> Backlog
+                                <label className={`high ${statusLevel === "Backlog" ? "selected" : ""}`}>
+                                <input type="radio" onChange={e => setStatusLevel(e.target.value)} value="Backlog" className="displayNone"/> Backlog
                                 </label>
-                                <label className="high">
-                                <input type="radio" onChange={e => setStatusLevel(e.target.value)} value="In Progress" /> In Progress
+                                <label className={`medium ${statusLevel === "In Progress" ? "selected" : ""}`}>
+                                <input type="radio" onChange={e => setStatusLevel(e.target.value)} value="In Progress" className="displayNone"/> In Progress
                                 </label>
-                                <label className="high">
-                                <input type="radio" onChange={e => setStatusLevel(e.target.value)} value="Completed" /> Completed
+                                <label className={`low ${statusLevel === "Completed" ? "selected" : ""}`}>
+                                <input type="radio" onChange={e => setStatusLevel(e.target.value)} value="Completed" className="displayNone"/> Completed
                                 </label>
                             </div>
 
                             
-                            {poppedstatus ? (<button onClick={handleAdd} className="button" >Create Task</button>) : 
-                            <button onClick={handleEdit} className="button" >Update Task</button>}
+                            {poppedstatus ? (<button onClick={handleAdd} className="newbtn" >Create Task</button>) : 
+                            <button onClick={handleEdit} className="newbtn" >Update Task</button>}
                         </form>
                     </div>
-            </div>
+
         </div> ): ''}
         </div>
     );
