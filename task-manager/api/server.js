@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes')
 const taskRoutes = require('./routes/taskRoutes')
+const path = require('path');
 
 require('dotenv').config();
 
@@ -29,13 +30,13 @@ app.use('/users', userRoutes);
 app.use('/tasks', taskRoutes);
 
 // --------------------------deployment------------------------------
-const __dirname = path.resolve();
+const __dirname1 = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.use(express.static(path.join(__dirname1, "../client/build")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname1,"client", "build", "index.html"))
   );
 } else {
   app.get("/", (req, res) => {
