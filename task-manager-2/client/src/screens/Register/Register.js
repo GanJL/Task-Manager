@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { register } from '../../actions/userActions';
 import { useDispatch } from 'react-redux'
 
-
 const Register = () => {
 
     const [email, setEmail] = useState("")
@@ -49,10 +48,6 @@ const Register = () => {
     const reRouteLogin = () => {
         navigate("/login")
     }
-
-
-
-
 
     return (
         <div className='fullPage d-flex'>

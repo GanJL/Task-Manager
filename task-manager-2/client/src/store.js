@@ -11,8 +11,6 @@ const reducer = combineReducers({
     taskCreate: taskCreateReducer,
     taskUpdate: taskUpdateReducer,
     taskDelete: taskDeleteReducer,
-
-
 })
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Tasks from "./Tasks/Tasks";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
-import Footer from "../components/Footer";
 
 function App() {
 
@@ -16,7 +15,6 @@ function App() {
             <Route path="/tasks" element={<Tasks/>} />
           </Routes>
       </Router>
-      <Footer/>
     </div>
   );
 }

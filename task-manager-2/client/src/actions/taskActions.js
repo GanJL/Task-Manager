@@ -16,65 +16,80 @@ import { TASK_LIST_FAIL,
 const API_BASE = "http://localhost:5000"
 
 export const listTasks = () => async (dispatch, getState) => {
+
     try {
-        dispatch({ type: TASK_LIST_REQUEST });
+
+          dispatch({ type: TASK_LIST_REQUEST });
    
-            const { userLogin: {userInfo}, } = getState( )
+          const { userLogin: {userInfo}, } = getState( )
 
-            const data  = await fetch(API_BASE + "/tasks", {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${userInfo.token}` 
-                }
+          const data  = await fetch(API_BASE + "/tasks", {
 
-            }).then(res => res.json())
+              method: "GET",
+              headers: {
+                  Authorization: `Bearer ${userInfo.token}` 
+              }
 
-            if (!data.errors){
+          }).then(res => res.json())
 
-                dispatch({ type: TASK_LIST_SUCCESS, payload: data })
-                localStorage.setItem("tasks", JSON.stringify(data))
-            }
+          if (!data.errors){
+
+              dispatch({ type: TASK_LIST_SUCCESS, payload: data })
+              localStorage.setItem("tasks", JSON.stringify(data))
+          }
+
         }
-        catch (error)  {
-            dispatch({
-                type: TASK_LIST_FAIL,
-                payload:
-                    error
+    catch (error)  {
+
+          dispatch({
+
+            type: TASK_LIST_FAIL,
+            payload:
+                error
             })
         }
 }
 
 export const createTaskAction = (title, description, urgency, status) => async (
+
     dispatch,
     getState
+
   ) => {
+
     try {
+
       dispatch({
         type: TASK_CREATE_REQUEST,
       });
+
       const {
         userLogin: { userInfo },
       } = getState();
-      console.log(userInfo.token);
 
       const data  = await fetch(API_BASE + "/tasks/create", {
+        
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}` 
         },
+
         body: JSON.stringify(title, description, urgency, status)
 
-        }).then(res => res.json())
+      }).then(res => res.json())
 
-        if (!data.errors){
-          console.log("passed");
-            dispatch({ type: TASK_CREATE_SUCCESS, payload: data })
-        }
+      if (!data.errors){
+
+        console.log("passed");
+        dispatch({ type: TASK_CREATE_SUCCESS, payload: data })
+
+      }
             
     } catch (error) {
 
       dispatch({
+
         type: TASK_CREATE_FAIL,
         payload: error.response,
 
@@ -83,7 +98,9 @@ export const createTaskAction = (title, description, urgency, status) => async (
   };
   
   export const deleteTaskAction = (id) => async (dispatch, getState) => {
+
     try {
+
       dispatch({
         type: TASK_DELETE_REQUEST,
       });
@@ -93,31 +110,38 @@ export const createTaskAction = (title, description, urgency, status) => async (
       } = getState();
   
       const data  = await fetch(API_BASE + `/tasks/${id}`, {
+
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}` 
         }
-        }).then(res => res.json())
+      }).then(res => res.json())
 
-        if (!data.errors){
-            dispatch({ type: TASK_DELETE_SUCCESS, payload: data })
-        }
+      if (!data.errors){
+          dispatch({ type: TASK_DELETE_SUCCESS, payload: data })
+      }
   
     } catch (error) {
 
       dispatch({
+
         type: TASK_DELETE_FAIL,
         payload: error.response,
+
       });
     }
   };
   
   export const updateTaskAction = (editedTask,id) => async (
+
     dispatch,
     getState
+
   ) => {
+
     try {
+
       dispatch({
         type: TASK_UPDATE_REQUEST,
       });
@@ -127,6 +151,7 @@ export const createTaskAction = (title, description, urgency, status) => async (
       } = getState();
   
       const data  = await fetch(API_BASE + `/tasks/${id}`, {
+
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -134,17 +159,19 @@ export const createTaskAction = (title, description, urgency, status) => async (
         },
         body: JSON.stringify(editedTask)
 
-        }).then(res => res.json())
+      }).then(res => res.json())
 
-        if (!data.errors){
-            dispatch({ type: TASK_UPDATE_SUCCESS, payload: data })
-            
-        }
+      if (!data.errors){
+          dispatch({ type: TASK_UPDATE_SUCCESS, payload: data })
+          
+      }
   
     } catch (error) {
+
           dispatch({
             type: TASK_UPDATE_FAIL,
             payload: error.response,
+            
           });
     }
 }

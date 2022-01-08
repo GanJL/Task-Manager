@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../actions/userActions';
 
-
-
 const Login = () => {
 
     const [email, setEmail] = useState("")
@@ -25,9 +23,6 @@ const Login = () => {
     
     })
     
-    const reRoute = () => {
-        navigate("/register")
-    }
     const handleSubmit = async (event) => {
 
         event.preventDefault();
@@ -39,7 +34,6 @@ const Login = () => {
     const reRouteRegister = () => {
         navigate("/register")
     }
-
 
     return (
         <div className='fullPage d-flex'>

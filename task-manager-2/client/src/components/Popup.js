@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createTaskAction, updateTaskAction } from "../actions/taskActions"
 import { useDispatch } from 'react-redux'
-import "../styles/style.css";
 
 export default function Popup({popped,isPopped,task,poppedstatus}) {
 

@@ -9,7 +9,7 @@ import Popup from "../../components/Popup";
 import "../../styles/style.css";
 import logoutLogo from '../../icons/logout-svgrepo-com.svg';
 import addLogo from '../../icons/add-svgrepo-com.svg';
-
+import Footer from "../../components/Footer";
 
 const Tasks = () => {
 
@@ -114,6 +114,7 @@ const Tasks = () => {
               </div>
             </div>)}
           </div> 
+          <Footer />
       </div>
     )
 

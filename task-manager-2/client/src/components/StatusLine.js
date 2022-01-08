@@ -14,26 +14,6 @@ export default function StatusLine(props) {
 
   }
 
-  // const handleTaskList = (taskList,status) => {
-  //   let filteredTask = Object.values(taskList).filter((task) => task.status === status)
-  //   if (filteredTask){
-  //     return filteredTask
-  //   }
-
-  // }
-
-  // const taskList = handleTaskList(tasks,status)
-  // console.log(taskList);
-
-
-  // console.log(tasks.map((a)=>console.log(a)));
-
-  // if (tasks) {
-  //   tasksForStatus = tasks.filter((task) => {
-  //     return task.status === status;
-  //   });
-  // }
-
   if (tasksForStatus) {
     taskList = tasksForStatus.map((task) => {
       return (

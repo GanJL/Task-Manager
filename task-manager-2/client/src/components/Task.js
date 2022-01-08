@@ -2,7 +2,7 @@ import { useState } from "react";
 import Popup from "./Popup";
 import { deleteTaskAction } from "../actions/taskActions"
 import { useDispatch } from 'react-redux'
-import "../styles/style.css";
+
 
 
 
