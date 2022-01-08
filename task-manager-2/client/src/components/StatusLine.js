@@ -1,26 +1,45 @@
 import Task from "./Task";
 
 export default function StatusLine(props) {
-  const { status, tasks, addTask, deleteTask, updateTask} = props;
+  const { status, tasks } = props;
 
-  let taskList, tasksForStatus;
+  let taskList;
 
-  if (tasks) {
-    console.log(tasks);
-    tasksForStatus = tasks.filter((task) => {
-      return task.status === status;
-    });
+  let tasksForStatus = []
+
+  for (let i in tasks) {
+    if (tasks[i].status === status) {
+      tasksForStatus.push(tasks[i])
+    }
+
   }
+
+  // const handleTaskList = (taskList,status) => {
+  //   let filteredTask = Object.values(taskList).filter((task) => task.status === status)
+  //   if (filteredTask){
+  //     return filteredTask
+  //   }
+
+  // }
+
+  // const taskList = handleTaskList(tasks,status)
+  // console.log(taskList);
+
+
+  // console.log(tasks.map((a)=>console.log(a)));
+
+  // if (tasks) {
+  //   tasksForStatus = tasks.filter((task) => {
+  //     return task.status === status;
+  //   });
+  // }
 
   if (tasksForStatus) {
     taskList = tasksForStatus.map((task) => {
       return (
         <Task
-          addTask={(task) => addTask(task)}
-          deleteTask={(id) => deleteTask(id)}
           key={task._id}
           task={task}
-          updateTask={(id,task) => updateTask(id,task)}
         />
       );
     });
@@ -36,5 +55,6 @@ export default function StatusLine(props) {
       </div>  
 
     </div>
+
   );
 }

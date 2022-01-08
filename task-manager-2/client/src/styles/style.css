@@ -1,0 +1,450 @@
+:root {
+	--primary: #D81E5B;
+	--secondary: #8A4EFC;
+	--light: #EEE;
+	--light-alt: #2e4164;
+	--dark: #131A26;
+	--dark-alt: #202B3E;
+
+}
+
+html, body, #root, .App {
+	height: 100%;
+	min-height: 100%;
+	overflow: auto;
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Fira Sans", sans-serif;
+}
+
+.App {
+	padding: 50px;
+	background-color: var(--dark);
+	color: var(--light);
+}
+
+
+h1 {
+	font-size: 40px;
+	font-weight: 700;
+	margin-bottom: 32px;
+}
+
+h4 {
+	font-size: 18px;
+	color: var(--light-alt);
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
+.task {
+
+	background-color:rgb(69, 69, 116);
+	padding: 16px;
+	border-radius: 16px;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.task-box {
+	background-color: var(--dark-alt);
+	padding-top: 30px;
+	border-radius: 16px;
+	min-height: 70vh;
+}
+
+.popupHeader {
+	font-size: 25px;
+	color: var(--light);
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
+.addPopup {
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	border-radius: 999px;
+	font-size: 28px;
+	font-weight: 900;
+	color: var(--light);
+	background-color: var(--primary);
+	background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
+	cursor: pointer;
+}
+.popupBackground {
+
+	width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: #131a26a4;
+
+}
+
+.popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	max-width: 400px;
+	background-color: var(--light);
+	padding: 32px;
+	border-radius: 16px;
+	box-shadow: 0px 4px 32px var(--dark);
+	background-color:rgb(52, 52, 100);
+
+}
+
+.closePopup {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: var(--dark);
+	cursor: pointer;
+}
+
+.popup h3 {
+	color: var(--dark);
+	margin-bottom: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.addBtn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 16px;
+}
+
+.button {
+	padding: 16px 32px;
+	border-radius: 999px;
+	background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+	display: inline-block;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 18px;
+	margin-top: 16px;
+	text-align: center;
+	cursor: pointer;
+	transition-duration: 0.4s;
+}
+
+
+.task-style{
+	border-radius: 16px;
+	padding: 20px;
+	background-color: var(--light-alt);
+}
+
+.wrapper {
+	word-break: break-word;
+   }
+
+/* https://freefrontend.com/css-gradient-buttons/ */
+.newbtn {
+	flex: 1 1 auto;
+	padding: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+	color: white;
+	min-width: 100px;
+	max-width: 100px;
+	border-radius: 999px;
+	font-size: 10px;
+}
+  
+.newbtn:hover {
+background-position: right center; /* change the direction of the change here */
+transform: scale(1.05) 
+}
+
+.btn-1 {
+background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+
+.btn-2 {
+background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);
+}
+
+.btn-3 {
+background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+}
+
+.btn-4 {
+background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.btn-5 {
+background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100%);
+}
+
+form {
+	display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    margin: 0 0.25rem;
+}
+
+.fullPage {
+	height: 100%;
+	justify-content: center;
+	text-align: center;
+}
+
+.centerContainer {
+	margin: auto;
+	width: 30%;
+	padding: 20px;
+	background-color: var(--light-alt);
+	min-height: 40%;
+	border-radius: 20px;
+	justify-content: center;
+	min-width: 300px;
+  }
+
+.reRouteLogin {
+	font-size: 12px;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+.registerError {
+	color: red;
+	margin: 10px;
+}
+.registerLabel {
+	color: var(--light);
+	text-transform: none;
+	margin-top: 7px;
+}
+
+.registerHeader{
+	margin-top: 50px;
+	position: absolute;
+}
+
+.registerInput {
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	color: var(--light-alt);
+	text-align: left;
+	resize: none;
+	display: flex;
+	font-family: "Kanit", sans-serif;
+	margin: 5px;
+	display: flex;
+	text-indent: 5px;
+}
+
+.registerInput:hover{
+	cursor: text;
+    border: 1px solid white;
+}
+
+.registerInput:focus {
+	outline: none;
+	color: var(--light-alt);
+	border: 2px solid var(--dark-alt);
+}
+
+.registerInput::placeholder{
+
+	color: var(--light-alt);
+	opacity: 0.5;
+	font-size: 15px;
+	text-indent: 5px;
+
+}
+
+.logoutLogo {
+	height: 25px;
+	object-fit: contain;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	min-width: 50px;	
+}
+
+.addLogo {
+	height: 25px;
+	margin-bottom: 5px;
+	object-fit: contain;
+	border-radius: 10px;
+	min-width: 50px;	
+}
+
+.popupInput {
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	color: white;
+	text-align: center;
+	resize: none;
+	display: flex;
+	font-family: "Kanit", sans-serif;
+}
+
+.popupInput:hover{
+	cursor: text;
+    border: 1px solid white;
+}
+
+.popupInput:focus {
+	outline: none;
+	border-color: #edc988;
+	color: #edc988;
+}
+
+.popupInput::placeholder{
+
+    color: white;
+	opacity: 0.5;
+
+}
+
+input + title {
+	margin-bottom: 0.5rem;
+	padding: 0.5rem 0;
+	width: 100%;
+	font-size: 1.1rem;
+}
+
+input + title:hover{
+	cursor: text;
+}
+
+.description {
+	margin-bottom: 0.5rem;
+	text-align: center;
+	padding: 0.5rem;
+	width: 100%;
+	font-size: 1.1rem;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	display: flex;
+	font-family: "Kanit", sans-serif;
+	color: white;
+	resize: none;
+}
+.description:hover {
+	cursor: text;
+	border: 1px solid white;
+}
+
+.description:focus{
+	outline: none;
+	border-color: #edc988;
+	color: #edc988;
+}
+
+.description::placeholder{
+
+    color: white;
+	opacity: 0.5;
+
+}
+
+
+.urgencyLabels {
+	margin-bottom: 1.5rem;
+	display: flex;
+	flex-direction: row;
+	font-size: 12px;
+	justify-content: center;
+}
+
+label {
+	color: #132743;
+	padding: 0.05rem 0.5rem;
+	margin: 0 0.25rem;
+	text-transform: uppercase;
+	border-radius: 0.25rem;
+}
+
+.displayNone {
+
+	display: none;
+
+}
+
+.low {
+	background-color: #9ad3bc;
+}
+
+.low:hover {
+	cursor: pointer;
+	opacity: 0.7;
+	border-color: #2ec1ac;
+	transform: scale(1.05) 
+}
+
+.medium {
+	background-color: #edf285;
+}
+
+.medium:hover {
+	cursor: pointer;
+	opacity: 0.7;
+	border-color: #edf285;
+	transform: scale(1.05) 
+}
+
+.high {
+	background-color: #ffa5a5;
+	vertical-align: middle;
+}
+
+.high:hover {
+	cursor: pointer;
+	opacity: 0.7;
+	border-color: #ffa5a5;
+	transform: scale(1.05) 
+}
+
+.selected {
+
+	opacity: 0.7;
+	transform: scale(1.05); 
+	display: inline-block;
+	font-weight: 700;
+}
+
+.footer {
+	width: 100%;
+	position: relative;
+	bottom: 0;
+	padding-left: 50px;
+	justify-content: center;
+	text-align: center;
+	color: black;
+}
+
+.footer img {
+	height: 30px;
+	opacity: 0.7;
+}
