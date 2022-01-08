@@ -8,17 +8,18 @@
 
 }
 
+html, body, #root, .App {
+	height: 100%;
+	min-height: 100%;
+	overflow: auto;
+}
+
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-
 	font-family: "Fira Sans", sans-serif;
-}
-
-html {
-	background-color: var(--dark);
-	color: var(--light);
 }
 
 .App {
@@ -26,6 +27,7 @@ html {
 	background-color: var(--dark);
 	color: var(--light);
 }
+
 
 h1 {
 	font-size: 40px;
@@ -41,15 +43,6 @@ h4 {
 	margin-bottom: 16px;
 }
 
-.popupHeader {
-	font-size: 25px;
-	color: var(--light);
-	text-transform: uppercase;
-	font-weight: 400;
-	margin-bottom: 16px;
-}
-
-
 .task {
 
 	background-color:rgb(69, 69, 116);
@@ -61,32 +54,17 @@ h4 {
 
 .task-box {
 	background-color: var(--dark-alt);
-	padding: 30px;
+	padding-top: 30px;
 	border-radius: 16px;
+	min-height: 70vh;
 }
 
-.addBtn{
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin-right: 16px;
-}
-
-
-.task .delete-task {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 16px;
+.popupHeader {
+	font-size: 25px;
 	color: var(--light);
-	width: 24px;
-	height: 24px;
-	border-radius: 50%;
-	background-color: #AF1E2D;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-weight: 700;
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 16px;
 }
 
 .addPopup {
@@ -106,6 +84,18 @@ h4 {
 	background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
 	cursor: pointer;
 }
+.popupBackground {
+
+	width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: #131a26a4;
+
+}
 
 .popup {
 	position: fixed;
@@ -119,6 +109,7 @@ h4 {
 	border-radius: 16px;
 	box-shadow: 0px 4px 32px var(--dark);
 	background-color:rgb(52, 52, 100);
+
 }
 
 .closePopup {
@@ -139,6 +130,12 @@ h4 {
 	text-transform: uppercase;
 }
 
+.addBtn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 16px;
+}
 
 .button {
 	padding: 16px 32px;
@@ -179,7 +176,7 @@ h4 {
 	max-width: 100px;
 	border-radius: 999px;
 	font-size: 10px;
-   }
+}
   
 .newbtn:hover {
 background-position: right center; /* change the direction of the change here */
@@ -209,12 +206,98 @@ background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 51%, #ffecd2 100
 form {
 	display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: left;
     margin: 0 0.25rem;
 }
 
-input {
+.fullPage {
+	height: 100%;
+	justify-content: center;
+	text-align: center;
+}
+
+.centerContainer {
+	margin: auto;
+	width: 30%;
+	padding: 20px;
+	background-color: var(--light-alt);
+	min-height: 40%;
+	border-radius: 20px;
+	justify-content: center;
+	min-width: 300px;
+  }
+
+.reRouteLogin {
+	font-size: 12px;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+.registerError {
+	color: red;
+	margin: 10px;
+}
+.registerLabel {
+	color: var(--light);
+	text-transform: none;
+	margin-top: 7px;
+}
+
+.registerHeader{
+	margin-top: 50px;
+	position: absolute;
+}
+
+.registerInput {
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+	color: var(--light-alt);
+	text-align: left;
+	resize: none;
+	display: flex;
+	font-family: "Kanit", sans-serif;
+	margin: 5px;
+	display: flex;
+	text-indent: 5px;
+}
+
+.registerInput:hover{
+	cursor: text;
+    border: 1px solid white;
+}
+
+.registerInput:focus {
+	outline: none;
+	color: var(--light-alt);
+	border: 2px solid var(--dark-alt);
+}
+
+.registerInput::placeholder{
+
+	color: var(--light-alt);
+	opacity: 0.5;
+	font-size: 15px;
+	text-indent: 5px;
+
+}
+
+.logoutLogo {
+	height: 25px;
+	object-fit: contain;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	min-width: 50px;	
+}
+
+.addLogo {
+	height: 25px;
+	margin-bottom: 5px;
+	object-fit: contain;
+	border-radius: 10px;
+	min-width: 50px;	
+}
+
+.popupInput {
 	background-color: transparent;
 	border: 1px solid transparent;
 	border-radius: 0.25rem;
@@ -225,18 +308,18 @@ input {
 	font-family: "Kanit", sans-serif;
 }
 
-input:hover{
+.popupInput:hover{
 	cursor: text;
     border: 1px solid white;
 }
 
-input:focus {
+.popupInput:focus {
 	outline: none;
 	border-color: #edc988;
 	color: #edc988;
 }
 
-input::placeholder{
+.popupInput::placeholder{
 
     color: white;
 	opacity: 0.5;
@@ -286,17 +369,13 @@ input + title:hover{
 
 }
 
-.logout {
-	position: absolute;
-    top: 5px;
-    right: 5px;
-	margin: 10px;
-}
+
 .urgencyLabels {
 	margin-bottom: 1.5rem;
 	display: flex;
 	flex-direction: row;
 	font-size: 12px;
+	justify-content: center;
 }
 
 label {
@@ -355,7 +434,17 @@ label {
 	font-weight: 700;
 }
 
+.footer {
+	width: 100%;
+	position: relative;
+	bottom: 0;
+	padding-left: 50px;
+	justify-content: center;
+	text-align: center;
+	color: black;
+}
 
-
-
-  
+.footer img {
+	height: 30px;
+	opacity: 0.7;
+}

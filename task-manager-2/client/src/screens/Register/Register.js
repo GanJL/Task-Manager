@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../actions/userActions';
 import { useDispatch } from 'react-redux'
+
+
 const Register = () => {
 
     const [email, setEmail] = useState("")
@@ -40,54 +42,77 @@ const Register = () => {
         else {
 
             dispatch(register(email, password, name))
-            navigate("/tasks")
-            
+            setTimeout(() => {navigate("/tasks")}, 250)
         }
-
-
     }
 
+    const reRouteLogin = () => {
+        navigate("/login")
+    }
+
+
+
+
+
     return (
-        <div>
-            <form>
-                <input
-                    type="text"
-                    className=""
-                    name="name"
-                    placeholder="Enter Name"
-                    onChange={e => setName(e.target.value)}
-                    value={name}
-                />      
-                <input
-                    type="text"
-                    className=""
-                    name="email"
-                    placeholder="Enter Email"
-                    onChange={e => setEmail(e.target.value)}
-                    value={email}
-                />      
-                <input
-                    type="password"
-                    className=""
-                    name="password"
-                    placeholder="Enter Password"
-                    onChange={e => setPassword(e.target.value)}
-                    value={password}
+        <div className='fullPage d-flex'>
+            <h1 className='registerHeader'>Register</h1>
+            <div className='centerContainer'>
+                <form>
+                    <label className='registerLabel'>Name</label>
+                    <input
+                        type="text"
+                        className=""
+                        name="name"
+                        placeholder="Enter Name (Max 20 Characters)"
+                        onChange={e => setName(e.target.value)}
+                        value={name}
+                        className="registerInput"
+                        maxLength={'20'}
                     />
-                <input
-                    type="password"
-                    className=""
-                    name="confirmpassword"
-                    placeholder="Confirm Password"
-                    onChange={e => setConfirmPassword(e.target.value)}
-                    value={confirmpassword}
+                    <label className='registerLabel'>Email</label>      
+                    <input
+                        type="text"
+                        className=""
+                        name="email"
+                        placeholder="Enter Email"
+                        onChange={e => setEmail(e.target.value)}
+                        value={email}
+                        className="registerInput"
                     />
-                          
-               <button onClick = {handleSubmit} className="button" >Register</button>
+                    <label className='registerLabel'>Password</label>    
+                    <input
+                        type="password"
+                        className=""
+                        name="password"
+                        placeholder="Enter Password (Min 6 Characters)"
+                        onChange={e => setPassword(e.target.value)}
+                        value={password}
+                        className="registerInput"
+                        />
+                    <label className='registerLabel'>Confirm Password</label>
+                    <input
+                        type="password"
+                        className=""
+                        name="confirmpassword"
+                        placeholder="Confirm Password"
+                        onChange={e => setConfirmPassword(e.target.value)}
+                        value={confirmpassword}
+                        className="registerInput"
+                        />
+
+                <a href='' className="reRouteLogin" onClick={reRouteLogin}>Already a user? Click to login!</a>
+                {errmsg && <div className='registerError'>{errmsg}</div>}
+
+                <div className='container text-center'>
+                    <button onClick = {handleSubmit} className="mt-3 newbtn">Register</button>
+                </div>
+
+                </form>
+            </div>
             
-               {errmsg && <div>{errmsg}</div>}
-            </form>
         </div>  
+
     )
 }
 

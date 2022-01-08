@@ -38,8 +38,9 @@ export const login = (email, password) => async (dispatch) => {
         }
 }
 
-export const register = (email, name, password) => async (dispatch) => {
+export const register = (email,password,name) => async (dispatch) => {
     try {
+
         dispatch({ type: USER_REGISTER_REQUEST });
    
             const data  = await fetch(API_BASE + "/users/register", {
@@ -51,13 +52,14 @@ export const register = (email, name, password) => async (dispatch) => {
     
             }).then(res => res.json())
 
-            console.log(data);
+            if (!data.errors){
 
-            dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
+                dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
 
-            dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
+                dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
 
-            localStorage.setItem("userInfo", JSON.stringify(data))
+                localStorage.setItem("userInfo", JSON.stringify(data))
+            }
 
         }
         catch (error)  {

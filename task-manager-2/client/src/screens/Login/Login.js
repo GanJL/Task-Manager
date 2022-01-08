@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../actions/userActions';
 
 
+
 const Login = () => {
 
     const [email, setEmail] = useState("")
@@ -33,24 +34,19 @@ const Login = () => {
 
         dispatch(login(email, password))
 
-
-
-        // const data  = await fetch(API_BASE + "/users/login", {
-		// 	method: "POST",
-		// 	headers: { 
-		// 		"Content-Type": "application/json" 
-		// 	},
-		// 	body: JSON.stringify({ email, password })
-
-		// }).then(res => res.json())
-        // .catch(err=> console.log(err));
-
-        // localStorage.setItem("userInfo", JSON.stringify(data))
     }
 
+    const reRouteRegister = () => {
+        navigate("/register")
+    }
+
+
     return (
-        <div>
+        <div className='fullPage d-flex'>
+            <h1 className='registerHeader'>Login</h1>
+            <div className='centerContainer'>
             <form>
+                <label className='registerLabel'>Email</label>
                 <input
                     type="text"
                     className=""
@@ -58,19 +54,27 @@ const Login = () => {
                     placeholder="Enter Email"
                     onChange={e => setEmail(e.target.value)}
                     value={email}
+                    className="registerInput"
                 />      
+                <label className='registerLabel'>Password</label>
                 <input
-                    type="text"
+                    type="password"
                     className=""
                     name="password"
                     placeholder="Enter Password"
                     onChange={e => setPassword(e.target.value)}
                     value={password}
+                    className="registerInput"
                     />
-                          
-               <button onClick = {handleSubmit} className="button" >Create Task</button>
-               <button onClick = {reRoute} className="button" >Register</button>
+
+                <a href='' className="reRouteLogin" onClick={reRouteRegister}>Need an account? Click to register!</a>
+
+                <div className='container text-center'>
+                    <button onClick = {handleSubmit} className="mt-3 newbtn">Login</button>
+                </div>
+
             </form>
+            </div>
         </div>
     )
 }

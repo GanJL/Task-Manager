@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Popup from "./Popup";
-// import "../styles/task.scss";
 import { deleteTaskAction } from "../actions/taskActions"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import "../styles/style.css";
+
 
 
 export default function Task(props) {
 
   const { task } = props;
 
+  const [isDelete, setDelete] = useState(false);
 
   const [popped, isPopped] = useState(false);
 
@@ -42,26 +43,37 @@ export default function Task(props) {
 
       <div className="fs-5">{task.title}</div>
 
+      <hr className="my-2"></hr>
+      
       <div className="wrapper mt-2 mb-2">
 
         <div className="fs-7">{task.description}</div>
 
       </div>
 
-      <div className={`text-center badge fs-7 mt-2 ${taskUrgency}`}>{task.urgency}</div>
-
-      <div className="pt-3 container">
+      <div className={`text-center badge fs-7 my-2 ${taskUrgency}`}>{task.urgency}</div>
 
         <div className="row justify-content-center">
 
-          <button className="newbtn btn-4 col-sm-3 m-1" onClick={() => isPopped(true)}>Edit</button>
+          <button className="newbtn btn-4 col-3 m-1" onClick={() => isPopped(true)}>Edit</button>
 
-          <button className="newbtn btn-4 col-sm-3 m-1" onClick={handleDelete}>Delete</button>
+          <button className="newbtn btn-4 col-3 m-1" onClick={()=>setDelete(true)}>Delete</button>
         
         </div>
           { popped ? (<Popup popped={popped} isPopped={isPopped} task={task} poppedstatus={false}/>): ''}
           
-      </div>
+        {isDelete && 
+          (<div className="popupBackground">
+            <div className="popup">
+              <div className="closePopup" onClick={() => setDelete(false)}>X</div>
+              <div className="popupHeader text-center">Delete Task</div>
+              <div className="task text-center">Are you sure you want to delete task <br></br>"{task.title}"?</div>
+              <div className="row justify-content-center">
+              <button onClick={handleDelete} className="newbtn btn-4 col-3 m-1">Yes</button>
+              <button onClick={() => setDelete(false)} className="newbtn btn-4 col-3 m-1">No</button>
+              </div>
+            </div>
+          </div>)}
 
     </div>
     
