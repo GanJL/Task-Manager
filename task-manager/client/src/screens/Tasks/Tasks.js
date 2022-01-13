@@ -23,9 +23,7 @@ const Tasks = () => {
     const { success: successUpdate } = taskUpdate;
     const taskCreate = useSelector((state) => state.taskCreate);
     const { success: successCreate } = taskCreate;
-
     const { userInfo } = userLogin
-
     const { tasks } = taskList
 
     const dispatch = useDispatch();
@@ -34,10 +32,12 @@ const Tasks = () => {
 
     useEffect(()=>{
       
-        dispatch(listTasks());
-        if (!userInfo) {
-          navigate("/")
-        }
+      if (!userInfo) {
+        navigate("/login")
+      }
+
+      dispatch(listTasks());
+
 
     }, [dispatch, userInfo, navigate, successDelete, successCreate, successUpdate]);
 
@@ -47,7 +47,7 @@ const Tasks = () => {
 
         dispatch(logout())
 
-        navigate("/");
+        navigate("/login");
         
     }
 
@@ -56,7 +56,7 @@ const Tasks = () => {
         <div>
           <div className='row'>
             <div className='col-4'>
-            <h1>Hello, {userInfo.name}</h1>
+            {userInfo && <h1>Hello, {userInfo.name}</h1>}
             </div>
             <div className='col-4 text-center'>
             <h1>

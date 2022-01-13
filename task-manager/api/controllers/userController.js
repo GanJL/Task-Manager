@@ -10,27 +10,32 @@ const authUser = asyncHandler(async (req, res) => {
 
     const user = await User.findOne({email});
     
-    if (user && (await user.matchPassword(password))) {
+    try {
+        if (user && (await user.matchPassword(password))) {
 
-        res.json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            token: generateToken(user._id)
-        })
-
-    } else {
-
-        return res.status(400).json({
-
-            "errors": [
-                {
-                    "msg": "Invalid email or password",
-                }
-            ]
-        })
+            res.json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                token: generateToken(user._id)
+            })
+    
+        } else {
+    
+            return res.status(400).json({
+    
+                "errors": [
+                    {
+                        "msg": "Invalid email or password",
+                    }
+                ]
+            })
+        }
+    } catch(error){
+        console.log(error);
     }
+
 
 })
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../actions/userActions';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Register = () => {
 
@@ -15,12 +15,13 @@ const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin
+
     useEffect(()=>{
         
-        const userInfo = localStorage.getItem("userInfo")
-
         if (userInfo) {
-            navigate("/tasks");
+            navigate("/mytasks");
         }
     
     })
@@ -41,7 +42,8 @@ const Register = () => {
         else {
 
             dispatch(register(email, password, name))
-            setTimeout(() => {navigate("/tasks")}, 250)
+
+            setTimeout(() => {navigate("/mytasks")}, 250)
         }
     }
 
@@ -97,6 +99,7 @@ const Register = () => {
                         />
 
                 <a href='' className="reRouteLogin" onClick={reRouteLogin}>Already a user? Click to login!</a>
+                
                 {errmsg && <div className='registerError'>{errmsg}</div>}
 
                 <div className='container text-center'>
