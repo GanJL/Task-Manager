@@ -5,29 +5,15 @@ const protect = asyncHandler(async (req, res, next) => {
 
   let token;
 
-  
-
   if (
 
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
 
-
   ) {
-
-    // const getToken = localStorage.getItem("token")
-    // console.log(getToken);
-
-    // console.log(req.headers.authorization);
-
-    // const token = req.user.token
-
-    // console.log(token);
 
     try {
 
-
-      
       token = req.headers.authorization.split(" ")[1];
 
       const decoded = JWT.verify(token, process.env.JWT_SECRET);

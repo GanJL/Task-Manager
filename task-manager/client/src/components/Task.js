@@ -3,9 +3,6 @@ import Popup from "./Popup";
 import { deleteTaskAction } from "../actions/taskActions"
 import { useDispatch } from 'react-redux'
 
-
-
-
 export default function Task(props) {
 
   const { task } = props;

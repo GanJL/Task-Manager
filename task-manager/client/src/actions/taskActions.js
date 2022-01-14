@@ -26,14 +26,6 @@ export const listTasks = () => async (dispatch, getState) => {
    
           const { userLogin: {userInfo}, } = getState()
 
-          // const config = {
-          //   headers: {
-          //     Authorization: `Bearer ${userInfo.token}`,
-          //   },
-          // };
-      
-          // const { data } = await axios.get(`api/tasks`, config);
-
           const data  = await fetch(API_BASE + "/api/tasks", {
         
             method: "GET",
@@ -44,15 +36,11 @@ export const listTasks = () => async (dispatch, getState) => {
         
           }).then(res => res.json())
 
-          console.log("here");
           if (!data.errors){
 
             dispatch({ type: TASK_LIST_SUCCESS, payload: data })
-            // localStorage.setItem("tasks", JSON.stringify(data))
-        }
 
-    
-
+          }
 
         }
     catch (error)  {
@@ -97,8 +85,12 @@ export const createTaskAction = (title, description, urgency, status) => async (
 
       }).then(res => res.json())
 
+      if (!data.errors){
+
         dispatch({ type: TASK_CREATE_SUCCESS, payload: data })
-            
+
+      }
+
     } catch (error) {
 
       dispatch({
@@ -134,7 +126,9 @@ export const createTaskAction = (title, description, urgency, status) => async (
       }).then(res => res.json())
 
       if (!data.errors){
+
           dispatch({ type: TASK_DELETE_SUCCESS, payload: data })
+          
       }
   
     } catch (error) {

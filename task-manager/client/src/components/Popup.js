@@ -59,8 +59,6 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 
         isPopped(false)
 
-        // window.location.reload();
-
     }
 
     return (
