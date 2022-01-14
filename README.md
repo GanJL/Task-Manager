@@ -1,4 +1,4 @@
-# Task-Manager V1
+# Task-Manager 
 
 Check out the walkthrough of this project:
 
@@ -36,3 +36,7 @@ Check out the walkthrough of this project:
     JWT_SECRET = [Password for JWT verification]
     NODE_ENV= [Environment type "production" or "development"]
 ```
+### Future improvements:
+
+* Adapt http-only json cookies to store JWT tokens/refresh tokens for added security  
+* Implement external backend API with AWS Lambda and Serverless Framework
