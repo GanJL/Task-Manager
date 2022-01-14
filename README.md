@@ -1,17 +1,15 @@
-# Task-Manager-2
+# Task-Manager V1
 
-Implemented with the following technologies:
+## Implemented with the following tools:
 
-1. MongoDB, ExpressJS, React, NodeJS
-2. BcryptJS
-3. JWT 
-4. React Redux 
-5. Bootstrap
-6. Heroku
+- MongoDB, ExpressJS, React, NodeJS
+- BcryptJS
+- JWT 
+- React Redux 
+- Bootstrap
+- Heroku
 
----------------------------------------------------
-
-Instructions for testing:
+## Instructions for testing:
 
 1. Install node modules -> "npm i" for both api and client directories
 2. Create .env file under api directory
