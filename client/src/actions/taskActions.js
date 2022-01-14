@@ -36,7 +36,6 @@ export const listTasks = () => async (dispatch, getState) => {
         
           }).then(res => res.json())
 
-          console.log("here");
           if (!data.errors){
 
             dispatch({ type: TASK_LIST_SUCCESS, payload: data })
@@ -86,8 +85,12 @@ export const createTaskAction = (title, description, urgency, status) => async (
 
       }).then(res => res.json())
 
+      if (!data.errors){
+
         dispatch({ type: TASK_CREATE_SUCCESS, payload: data })
-            
+
+      }
+
     } catch (error) {
 
       dispatch({
@@ -123,7 +126,9 @@ export const createTaskAction = (title, description, urgency, status) => async (
       }).then(res => res.json())
 
       if (!data.errors){
+
           dispatch({ type: TASK_DELETE_SUCCESS, payload: data })
+          
       }
   
     } catch (error) {
