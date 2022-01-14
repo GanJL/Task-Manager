@@ -9,10 +9,9 @@ function App() {
     <div className="App">
       <Router>
           <Routes>
-            <Route path="/" element={<Login/>} />
+            <Route path="/" element={<Tasks/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/tasks" element={<Tasks/>} />
           </Routes>
       </Router>
     </div>
@@ -20,3 +19,4 @@ function App() {
 }
 
 export default App;
+

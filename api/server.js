@@ -1,5 +1,5 @@
 const express = require('express');
-// const cors = require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes')
 const taskRoutes = require('./routes/taskRoutes')
@@ -10,7 +10,9 @@ require('dotenv').config();
 
 const app = express();
  
-// app.use(cors());
+app.use(cors());
+
+
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
@@ -25,8 +27,8 @@ connection.once('open', () => {
 
 })
 
-app.use('/users', userRoutes);
-app.use('/tasks', taskRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/tasks', taskRoutes);
 
 // --------------------------deployment------------------------------
 // const __dirname = path.resolve();
@@ -35,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.join(__dirname, "../client/build/index.html"))
+    res.sendFile(path.resolve(__dirname, "../client/build/index.html"))
   );
 } else {
   app.get("/", (req, res) => {

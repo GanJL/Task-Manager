@@ -12,8 +12,11 @@ import { TASK_LIST_FAIL,
     TASK_UPDATE_FAIL
 
 } from "../constants/taskConstants"
+import axios from "axios";
 
 const API_BASE = "http://localhost:5000"
+
+
 
 export const listTasks = () => async (dispatch, getState) => {
 
@@ -21,21 +24,23 @@ export const listTasks = () => async (dispatch, getState) => {
 
           dispatch({ type: TASK_LIST_REQUEST });
    
-          const { userLogin: {userInfo}, } = getState( )
+          const { userLogin: {userInfo}, } = getState()
 
-          const data  = await fetch(API_BASE + "/tasks", {
-
-              method: "GET",
-              headers: {
-                  Authorization: `Bearer ${userInfo.token}` 
-              }
-
+          const data  = await fetch(API_BASE + "/api/tasks", {
+        
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userInfo.token}` 
+            },
+        
           }).then(res => res.json())
 
+          console.log("here");
           if (!data.errors){
 
-              dispatch({ type: TASK_LIST_SUCCESS, payload: data })
-              localStorage.setItem("tasks", JSON.stringify(data))
+            dispatch({ type: TASK_LIST_SUCCESS, payload: data })
+
           }
 
         }
@@ -64,10 +69,12 @@ export const createTaskAction = (title, description, urgency, status) => async (
       });
 
       const {
+        
         userLogin: { userInfo },
+
       } = getState();
 
-      const data  = await fetch(API_BASE + "/tasks/create", {
+      const data  = await fetch(API_BASE + "/api/tasks/create", {
         
         method: "POST",
         headers: {
@@ -79,12 +86,7 @@ export const createTaskAction = (title, description, urgency, status) => async (
 
       }).then(res => res.json())
 
-      if (!data.errors){
-
-        console.log("passed");
         dispatch({ type: TASK_CREATE_SUCCESS, payload: data })
-
-      }
             
     } catch (error) {
 
@@ -109,13 +111,15 @@ export const createTaskAction = (title, description, urgency, status) => async (
         userLogin: { userInfo },
       } = getState();
   
-      const data  = await fetch(API_BASE + `/tasks/${id}`, {
-
+  
+      const data  = await fetch(API_BASE + `/api/tasks/${id}`, {
+        
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}` 
-        }
+        },
+
       }).then(res => res.json())
 
       if (!data.errors){
@@ -150,13 +154,15 @@ export const createTaskAction = (title, description, urgency, status) => async (
         userLogin: { userInfo },
       } = getState();
   
-      const data  = await fetch(API_BASE + `/tasks/${id}`, {
 
+      const data  = await fetch(API_BASE + `/api/tasks/${id}`, {
+        
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${userInfo.token}` 
         },
+
         body: JSON.stringify(editedTask)
 
       }).then(res => res.json())

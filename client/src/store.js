@@ -3,6 +3,13 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 import { taskListReducer, taskCreateReducer, taskUpdateReducer, taskDeleteReducer} from './reducers/taskReducers';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+    key: 'persist-task',
+    storage
+}
 
 const reducer = combineReducers({
     userLogin : userLoginReducer,
@@ -13,21 +20,18 @@ const reducer = combineReducers({
     taskDelete: taskDeleteReducer,
 })
 
-const userInfoFromStorage = localStorage.getItem("userInfo")
-    ? JSON.parse(localStorage.getItem("userInfo"))
-    : null;
+const persistedReducer = persistReducer(persistConfig, reducer)
 
-const initialState = {
-    userLogin: { userInfo: userInfoFromStorage },
-}
 
 const middleware = [thunk];
 
 const store = createStore(
-    reducer,
-    initialState,
+    persistedReducer,
     composeWithDevTools(applyMiddleware(...middleware))
 );
 
+const persistor = persistStore(store)
+
 export default store;
 
+export { persistor }

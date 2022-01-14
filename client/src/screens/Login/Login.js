@@ -13,12 +13,12 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin
+    const { userInfo, error } = userLogin
 
     useEffect(()=>{
         
         if (userInfo) {
-            navigate("/tasks");
+            navigate("/");
         }
     
     })
@@ -62,6 +62,8 @@ const Login = () => {
                     />
 
                 <a href='' className="reRouteLogin" onClick={reRouteRegister}>Need an account? Click to register!</a>
+
+                {error && <div className='registerError'>{error[0].msg}</div>}
 
                 <div className='container text-center'>
                     <button onClick = {handleSubmit} className="mt-3 newbtn">Login</button>

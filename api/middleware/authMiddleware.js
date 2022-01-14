@@ -1,7 +1,6 @@
 const JWT = require("jsonwebtoken")
 const User = require("../models/users")
 const asyncHandler = require("express-async-handler");
-
 const protect = asyncHandler(async (req, res, next) => {
 
   let token;
@@ -14,7 +13,7 @@ const protect = asyncHandler(async (req, res, next) => {
   ) {
 
     try {
-      
+
       token = req.headers.authorization.split(" ")[1];
 
       const decoded = JWT.verify(token, process.env.JWT_SECRET);
@@ -30,11 +29,13 @@ const protect = asyncHandler(async (req, res, next) => {
             "errors": [
                 {
                     "msg": "Token invalid",
-                }
+                },
             ]
         })
     }
+
   }
+  
 
   if (!token) {
 
@@ -47,6 +48,7 @@ const protect = asyncHandler(async (req, res, next) => {
         ]
     })
   }
+
 });
 
 module.exports = { protect };
