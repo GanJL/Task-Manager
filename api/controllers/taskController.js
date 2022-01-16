@@ -31,14 +31,8 @@ const createTask = asyncHandler(async (req, res) => {
 
   if (!title || !description || !urgency || !status) {
 
-    res.status(400).json({
-
-        "errors": [
-            {
-                "msg": "Error in task creation",
-            }
-        ]
-    })
+    res.status(400);
+    throw new Error("Please Fill all the feilds");
 
   } else {
 
@@ -62,17 +56,9 @@ const deleteTask = asyncHandler(async (req, res) => {
 
   const task = await Task.findById(req.params.id);
 
-  if (task.user.toString() !== req.user._id.toString()) {
-
-    res.status(401).json({
-
-        "errors": [
-            {
-                "msg": "You can't perform this action",
-            }
-        ]
-    })
-
+  if (note.user.toString() !== req.user._id.toString()) {
+    res.status(401);
+    throw new Error("You can't perform this action");
   }
 
   if (task) {
@@ -83,34 +69,20 @@ const deleteTask = asyncHandler(async (req, res) => {
 
   } else {
 
-    res.status(404).json({
-
-        "errors": [
-            {
-                "msg": "Task not found",
-            }
-        ]
-    })
+    res.status(404);
+    throw new Error("Task not Found");
   }
 });
 
 const updateTask = asyncHandler(async (req, res) => {
 
-    const { title, description, urgency, status } = req.body;
+  const { title, description, urgency, status } = req.body;
 
   const task = await Task.findById(req.params.id);
 
-  if (task.user.toString() !== req.user._id.toString()) {
-    
-    res.status(401).json({
-
-        "errors": [
-            {
-                "msg": "You can't perform this action",
-            }
-        ]
-    })
-
+  if (note.user.toString() !== req.user._id.toString()) {
+    res.status(401);
+    throw new Error("You can't perform this action");
   }
 
   if (task) {
@@ -126,14 +98,8 @@ const updateTask = asyncHandler(async (req, res) => {
 
   } else {
 
-    res.status(404).json({
-      
-        "errors": [
-            {
-                "msg": "Task not found",
-            }
-        ]
-    })
+    res.status(404);
+    throw new Error("Task not found");
   }
 });
 

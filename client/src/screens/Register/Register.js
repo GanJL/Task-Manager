@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux'
+import Loading from "../../components/Loading"
 
 const Register = () => {
 
@@ -16,7 +17,7 @@ const Register = () => {
     const navigate = useNavigate();
     
     const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin
+    const { userInfo, error, loading } = userLogin
 
     useEffect(()=>{
         
@@ -100,7 +101,10 @@ const Register = () => {
 
                 <a href='' className="reRouteLogin" onClick={reRouteLogin}>Already a user? Click to login!</a>
                 
-                {errmsg && <div className='registerError'>{errmsg}</div>}
+                {error && <div className='registerError'>{error}</div>}
+
+                {loading && <Loading />}
+
 
                 <div className='container text-center'>
                     <button onClick = {handleSubmit} className="mt-3 newbtn">Register</button>
