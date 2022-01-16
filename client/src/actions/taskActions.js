@@ -76,7 +76,7 @@ export const createTaskAction = (title, description, urgency, status) => async (
   
       const { data } = await axios.post(
         `/api/tasks/create`,
-        { title, description, urgency, status },
+        {title, description, urgency, status},
         config
       );
 

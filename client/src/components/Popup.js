@@ -25,17 +25,8 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
     const handleAdd = (event) => {
     
         event.preventDefault()
-    
-        const newTasktoAdd = {
-
-              title: title,
-              description: description,
-              urgency: urgencyLevel,
-              status: statusLevel,
-
-            }
-    
-        dispatch(createTaskAction(newTasktoAdd))
+        
+        dispatch(createTaskAction(title, description, urgencyLevel, statusLevel))
 
         isPopped(false)
 

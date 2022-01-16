@@ -32,17 +32,17 @@ const createTask = asyncHandler(async (req, res) => {
   if (!title || !description || !urgency || !status) {
 
     res.status(400);
-    throw new Error("Please Fill all the feilds");
+    throw new Error("Please fill all the fields");
 
   } else {
 
     const tasks = new Task({
   
         user: req.user._id,
-        title: title,
-        description: description,
-        urgency: urgency,
-        status: status,
+        title,
+        description,
+        urgency,
+        status,
         
       });
 
@@ -56,7 +56,7 @@ const deleteTask = asyncHandler(async (req, res) => {
 
   const task = await Task.findById(req.params.id);
 
-  if (note.user.toString() !== req.user._id.toString()) {
+  if (task.user.toString() !== req.user._id.toString()) {
     res.status(401);
     throw new Error("You can't perform this action");
   }
@@ -80,7 +80,7 @@ const updateTask = asyncHandler(async (req, res) => {
 
   const task = await Task.findById(req.params.id);
 
-  if (note.user.toString() !== req.user._id.toString()) {
+  if (task.user.toString() !== req.user._id.toString()) {
     res.status(401);
     throw new Error("You can't perform this action");
   }
@@ -88,7 +88,7 @@ const updateTask = asyncHandler(async (req, res) => {
   if (task) {
 
     task.title = title;
-    task.description = description;
+    task.description = description; 
     task.urgency = urgency;
     task.status = status;
 
