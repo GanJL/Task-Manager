@@ -26,15 +26,24 @@ export const listTasks = () => async (dispatch, getState) => {
    
           const { userLogin: {userInfo}, } = getState()
 
-          const data  = await fetch(API_BASE + "/api/tasks", {
+          // const data  = await fetch(API_BASE + "/api/tasks", {
         
-            method: "GET",
+          //   method: "GET",
+          //   headers: {
+          //       "Content-Type": "application/json",
+          //       Authorization: `Bearer ${userInfo.token}` 
+          //   },
+        
+          // }).then(res => res.json())
+
+          const config = {
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${userInfo.token}` 
+              Authorization: `Bearer ${userInfo.token}`,
             },
-        
-          }).then(res => res.json())
+          };
+      
+          const { data } = await axios.get(`/api/tasks`, config);
+
 
           if (!data.errors){
 

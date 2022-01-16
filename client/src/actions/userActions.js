@@ -7,6 +7,7 @@ import { USER_LOGIN_FAIL,
     USER_REGISTER_SUCCESS 
 } from "../constants/userConstants"
 
+import axios from "axios";
 
 
 const API_BASE = "http://localhost:5000"
@@ -17,18 +18,30 @@ export const login = (email, password) => async (dispatch) => {
 
             dispatch({ type: USER_LOGIN_REQUEST });
 
-            const data  = await fetch(API_BASE + "/api/users/login", {
+            // const data  = await fetch(API_BASE + "/api/users/login", {
         
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
+            //     method: "POST",
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         email,
+            //         password,
+            //     }),
 
-              }).then(res => res.json())
+            //   }).then(res => res.json())
+
+            const config = {
+                headers: {
+                  "Content-type": "application/json",
+                },
+              };
+          
+              const { data } = await axios.post(
+                "/api/users/login",
+                { email, password },
+                config
+              );
 
 
             if (!data.errors){
