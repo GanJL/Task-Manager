@@ -7,7 +7,8 @@ import Loading from "../components/Loading"
 
 export default function Popup({popped,isPopped,task,poppedstatus}) {
 
-
+    const taskList = useSelector((state) => state.taskList);
+    const { loading } = taskList;
     const taskCreate = useSelector((state) => state.taskCreate);
     const { createLoading } = taskCreate;
     const taskUpdate = useSelector((state) => state.taskUpdate);
@@ -37,7 +38,7 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
         
         dispatch(createTaskAction(title, description, urgencyLevel, statusLevel))
 
-        if (!createLoading) {
+        if (!createLoading && !loading) {
             isPopped(false)
         }
         
@@ -60,11 +61,9 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 
         dispatch(updateTaskAction(EditedTask,task._id,))
 
-
-        if (!updateLoading) {
+        if (!updateLoading && !loading) {
             isPopped(false)
-        }
-        
+        }       
 
     }
 

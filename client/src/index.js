@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './screens/App';
 import { Provider } from 'react-redux'
-import store, {persistor} from './store'
+import store from './store'
 import "../src/styles/style.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {PersistGate} from 'redux-persist/integration/react'
+// import {PersistGate} from 'redux-persist/integration/react'
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor}>
+    {/* <PersistGate persistor={persistor}> */}
       <App />
-    </PersistGate>
+    {/* </PersistGate> */}
   </Provider>,
   document.getElementById('root')
 );
