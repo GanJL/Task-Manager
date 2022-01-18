@@ -6,11 +6,11 @@ const generateToken = require('../utils/generateToken');
 
 const authUser = asyncHandler(async (req, res) => {
 
-    const { email, password} = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({email});
+    const user = await User.findOne({ email });
     
-    try {
+
         if (user && (await user.matchPassword(password))) {
 
             res.json({
@@ -23,20 +23,11 @@ const authUser = asyncHandler(async (req, res) => {
     
         } else {
     
-            return res.status(400).json({
-    
-                "errors": [
-                    {
-                        "msg": "Invalid email or password",
-                    }
-                ]
-            })
+            res.status(401);
+            throw new Error("Invalid Email or Password");
+
         }
-    } catch(error){
-        console.log(error);
-    }
-
-
+    
 })
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -46,17 +37,8 @@ const registerUser = asyncHandler(async (req, res) => {
     const userExists = await User.findOne({email});
 
     if (userExists) {
-
-        return res.status(400).json({
-
-            "errors": [
-                {
-                    "msg": "User already exist",
-                }
-            ]
-        })
-
-        
+        res.status(404);
+        throw new Error("User already exists");
     }
 
     const user = await User.create({
@@ -81,14 +63,8 @@ const registerUser = asyncHandler(async (req, res) => {
 
     } else {
 
-        return res.status(400).json({
-            
-            "errors": [
-                {
-                    "msg": "User already exist",
-                }
-            ]
-        })
+        res.status(400);
+        throw new Error("User not found");
     }
 
 })

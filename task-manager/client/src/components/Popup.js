@@ -2,7 +2,10 @@ import { useState } from "react";
 import { createTaskAction, updateTaskAction } from "../actions/taskActions"
 import { useDispatch } from 'react-redux'
 
+
+
 export default function Popup({popped,isPopped,task,poppedstatus}) {
+
 
     if (task === undefined) {
 
@@ -20,24 +23,21 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
     const [title, setTitle] = useState(task.title);
     const [urgencyLevel, setUrgencyLevel] = useState(task.urgency);
     const [statusLevel, setStatusLevel] = useState(task.status);
+    const [err, setErr] = useState(false)
 
 
     const handleAdd = (event) => {
     
         event.preventDefault()
-    
-        const newTasktoAdd = {
 
-              title: title,
-              description: description,
-              urgency: urgencyLevel,
-              status: statusLevel,
-
-            }
-    
-        dispatch(createTaskAction(newTasktoAdd))
-
-        isPopped(false)
+        if (title === "" || description === "" || urgencyLevel === "" || statusLevel === "") {
+            setErr(true)
+        }
+        else {
+            dispatch(createTaskAction(title, description, urgencyLevel, statusLevel))
+            isPopped(false)
+        }
+        
 
     }
 
@@ -56,6 +56,7 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
     
 
         dispatch(updateTaskAction(EditedTask,task._id,))
+
 
         isPopped(false)
 
@@ -112,9 +113,14 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
                                     </div>
 
                                     <div className="text-center">
-                                    {poppedstatus ? (<button onClick={handleAdd} className="newbtn" >Create Task</button>) : 
-                                    <button onClick={handleEdit} className="newbtn" >Update Task</button>}
+                                        {err && (<div className="text-danger">Please fill in all fields</div>)}
+                                        <div>
+                                            {poppedstatus ? (<button onClick={handleAdd} className="newbtn" >Create Task</button>) : 
+                                            <button onClick={handleEdit} className="newbtn" >Update Task</button>}
+                                        </div>
+
                                     </div>
+                                    
                                 </form>
                             </div>
 

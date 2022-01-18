@@ -41,4 +41,3 @@ Check out the walkthrough of this project:
 * Profile update 
 * Admin functions
 * Adapt http-only json cookies to store JWT tokens/refresh tokens for added security  
-* Implement external backend API with AWS Lambda and Serverless framework

@@ -7,9 +7,7 @@ import { USER_LOGIN_FAIL,
     USER_REGISTER_SUCCESS 
 } from "../constants/userConstants"
 
-
-
-const API_BASE = "http://localhost:5000"
+import axios from "axios";
 
 export const login = (email, password) => async (dispatch) => {
 
@@ -17,35 +15,24 @@ export const login = (email, password) => async (dispatch) => {
 
             dispatch({ type: USER_LOGIN_REQUEST });
 
-            const data  = await fetch(API_BASE + "/api/users/login", {
-        
-                method: "POST",
+            const config = {
                 headers: {
-                    'Content-Type': 'application/json',
+                  "Content-type": "application/json",
                 },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
+              };
+          
+              const { data } = await axios.post(
+                "/api/users/login",
+                { email, password },
+                config
+              );
 
-              }).then(res => res.json())
 
 
-            if (!data.errors){
 
-                dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
+            dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
 
-            }
-            else {
-
-                dispatch({
-                    type: USER_LOGIN_FAIL,
-                    payload:
-                        data.errors
-                })
-
-            }
-
+            localStorage.setItem("userInfo", JSON.stringify(data));
         }
 
         catch (error)  {
@@ -53,9 +40,10 @@ export const login = (email, password) => async (dispatch) => {
             dispatch({
                 type: USER_LOGIN_FAIL,
                 payload:
-                    error
-            })
-
+                  error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+              });
         }
 }
 
@@ -65,40 +53,42 @@ export const register = (email,password,name) => async (dispatch) => {
 
             dispatch({ type: USER_REGISTER_REQUEST });
 
-
-            const data  = await fetch(API_BASE + "/api/users/register", {
-        
-                method: "POST",
-
+            const config = {
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-type": "application/json",
                 },
- 
-                body: JSON.stringify({email,password,name})
+                };
         
-              }).then(res => res.json())
+            const { data } = await axios.post(
+                "/api/users/register",
+                { name, email, password },
+                config
+            );
 
+            dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
 
-            if (!data.errors){
-
-                dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
-
-                dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
-
-            }
+            dispatch({ type: USER_LOGIN_SUCCESS, payload: data })        
+            
+            localStorage.setItem("userInfo", JSON.stringify(data));
 
         }
+
     catch (error)  {
-            dispatch({
+             dispatch({
                 type: USER_REGISTER_FAIL,
                 payload:
-                    error
-            })
+                    error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+            });
         }
 }
 
 export const logout = () => async (dispatch) => {
 
-   dispatch({type: USER_LOGOUT})
-   
+    localStorage.removeItem("userInfo");
+
+    dispatch({type: USER_LOGOUT})
+
+
 }

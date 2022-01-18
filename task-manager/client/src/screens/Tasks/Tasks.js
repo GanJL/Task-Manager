@@ -10,21 +10,25 @@ import "../../styles/style.css";
 import logoutLogo from '../../icons/logout-svgrepo-com.svg';
 import addLogo from '../../icons/add-svgrepo-com.svg';
 import Footer from "../../components/Footer";
+import Loading from "../../components/Loading"
 
 const Tasks = () => {
 
     const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin
     const taskList = useSelector((state) => state.taskList);
+    const { tasks, loading: loadingTask } = taskList
     const [popped, isPopped] = useState(false);
     const [isLogout, setLogout] = useState(false);
     const taskDelete = useSelector((state) => state.taskDelete);
-    const { success: successDelete } = taskDelete;
+    const { success: successDelete, loading: loadingDelete } = taskDelete;
     const taskUpdate = useSelector((state) => state.taskUpdate);
-    const { success: successUpdate } = taskUpdate;
+    const { success: successUpdate, loading: loadingUpdate } = taskUpdate;
     const taskCreate = useSelector((state) => state.taskCreate);
-    const { success: successCreate } = taskCreate;
-    const { userInfo } = userLogin
-    const { tasks } = taskList
+    const { success: successCreate, loading: loadingCreate } = taskCreate;
+
+
+
 
     const dispatch = useDispatch();
 
@@ -37,7 +41,6 @@ const Tasks = () => {
       }
 
       dispatch(listTasks());
-
 
     }, [dispatch, userInfo, navigate, successDelete, successCreate, successUpdate]);
 
@@ -100,6 +103,9 @@ const Tasks = () => {
           </div>
           
           <br></br>
+
+          {loadingTask && <Loading />}
+
           { popped ? (<div><Popup popped={popped} isPopped={isPopped} poppedstatus={true}/></div>): ''}
           {isLogout && 
             (<div className="popupBackground">

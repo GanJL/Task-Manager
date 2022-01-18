@@ -16,11 +16,11 @@ import { TASK_LIST_FAIL,
 export const taskListReducer = (state = { tasks: {} }, action) => {
     switch (action.type) {
         case TASK_LIST_REQUEST: 
-            return {};
+            return { loading: true};
         case TASK_LIST_SUCCESS: 
-            return { tasks: action.payload };
+            return { loading: false, tasks: action.payload };
         case TASK_LIST_FAIL: 
-            return { error: action.payload };
+            return { loading: false, error: action.payload };
         default:
             return state;
     }
@@ -30,11 +30,11 @@ export const taskListReducer = (state = { tasks: {} }, action) => {
 export const taskCreateReducer = (state = {}, action) => {
     switch (action.type) {
         case TASK_CREATE_REQUEST: 
-            return {};
+            return { loading: true };
         case TASK_CREATE_SUCCESS: 
-            return { success: true };
+            return { loading: false, success: true };
         case TASK_CREATE_FAIL: 
-            return { error: action.payload, success: false };
+            return { loading: false, error: action.payload, success: false };
         default:
             return state;
     }
@@ -43,11 +43,11 @@ export const taskCreateReducer = (state = {}, action) => {
 export const taskDeleteReducer = (state = {}, action) => {
     switch (action.type) {
         case TASK_DELETE_REQUEST: 
-            return {};
+            return { loading: true };
         case TASK_DELETE_SUCCESS: 
-            return { success: true };
+            return { loading: false, success: true };
         case TASK_DELETE_FAIL: 
-            return { error: action.payload, success: false };
+            return { loading: false, error: action.payload, success : false };
         default:
             return state;
     }
@@ -56,11 +56,11 @@ export const taskDeleteReducer = (state = {}, action) => {
 export const taskUpdateReducer = (state = {}, action) => {
     switch (action.type) {
         case TASK_UPDATE_REQUEST: 
-            return {};
+            return { loading: true };
         case TASK_UPDATE_SUCCESS: 
-            return { success: true };
+            return { loading: false, success: true };
         case TASK_UPDATE_FAIL: 
-            return { error: action.payload, success: false };
+            return { loading: false, error: action.payload, success: false };
         default:
             return state;
     }
