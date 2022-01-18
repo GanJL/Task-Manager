@@ -104,7 +104,7 @@ const Tasks = () => {
           
           <br></br>
 
-          {(loadingTask || loadingDelete || loadingCreate || loadingUpdate ) && <Loading />}
+          {loadingTask && <Loading />}
 
           { popped ? (<div><Popup popped={popped} isPopped={isPopped} poppedstatus={true}/></div>): ''}
           {isLogout && 
