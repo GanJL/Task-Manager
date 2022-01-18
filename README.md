@@ -1,8 +1,14 @@
 # Task-Manager 
 
-Check out the walkthrough of this project:
+### Overview:
 
-[Project Walkthrough](https://www.youtube.com/watch?v=rdK6Myjwhws&ab_channel=Gan)
+* A Task Manager App to replace the use of Windows Sticky Notes
+* Built on popular MERN stack for scalability and functionality
+* Check out the project:
+
+    * [Project Site](https://task-manager-ganjl.herokuapp.com/)
+
+    * [Project Walkthrough](https://www.youtube.com/watch?v=rdK6Myjwhws&ab_channel=Gan)
 
 ### Implemented with the following tools:
 
