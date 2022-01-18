@@ -23,6 +23,7 @@ const Tasks = () => {
     const { success: successUpdate } = taskUpdate;
     const taskCreate = useSelector((state) => state.taskCreate);
     const { success: successCreate } = taskCreate;
+
     const { userInfo } = userLogin
     const { tasks } = taskList
 
@@ -37,7 +38,6 @@ const Tasks = () => {
       }
 
       dispatch(listTasks());
-
 
     }, [dispatch, userInfo, navigate, successDelete, successCreate, successUpdate]);
 

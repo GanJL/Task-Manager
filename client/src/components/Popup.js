@@ -1,8 +1,17 @@
 import { useState } from "react";
 import { createTaskAction, updateTaskAction } from "../actions/taskActions"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import Loading from "../components/Loading"
+
+
 
 export default function Popup({popped,isPopped,task,poppedstatus}) {
+
+
+    const taskCreate = useSelector((state) => state.taskCreate);
+    const { createLoading } = taskCreate;
+    const taskUpdate = useSelector((state) => state.taskUpdate);
+    const { updateLoading } = taskUpdate;
 
     if (task === undefined) {
 
@@ -28,7 +37,10 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
         
         dispatch(createTaskAction(title, description, urgencyLevel, statusLevel))
 
-        isPopped(false)
+        if (!createLoading) {
+            isPopped(false)
+        }
+        
 
     }
 
@@ -48,7 +60,11 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 
         dispatch(updateTaskAction(EditedTask,task._id,))
 
-        isPopped(false)
+
+        if (!updateLoading) {
+            isPopped(false)
+        }
+        
 
     }
 
@@ -103,9 +119,12 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
                                     </div>
 
                                     <div className="text-center">
-                                    {poppedstatus ? (<button onClick={handleAdd} className="newbtn" >Create Task</button>) : 
-                                    <button onClick={handleEdit} className="newbtn" >Update Task</button>}
+                                        {poppedstatus ? (<button onClick={handleAdd} className="newbtn" >Create Task</button>) : 
+                                        <button onClick={handleEdit} className="newbtn" >Update Task</button>}
                                     </div>
+
+                                    {(createLoading || updateLoading) && <Loading />}
+                                    
                                 </form>
                             </div>
 

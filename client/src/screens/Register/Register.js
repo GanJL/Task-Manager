@@ -16,13 +16,13 @@ const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo, error, loading } = userLogin
+    const userRegister = useSelector((state) => state.userRegister);
+    const { userInfo, error, loading } = userRegister
 
     useEffect(()=>{
         
         if (userInfo) {
-            navigate("/mytasks");
+            navigate("/");
         }
     
     })
@@ -44,7 +44,11 @@ const Register = () => {
 
             dispatch(register(email, password, name))
 
-            setTimeout(() => {navigate("/mytasks")}, 250)
+            // setTimeout(() => {navigate("/mytasks")}, 250)
+
+            // if (loading) {
+            //     navigate("/")
+            // }
         }
     }
 
@@ -101,10 +105,11 @@ const Register = () => {
 
                 <a href='' className="reRouteLogin" onClick={reRouteLogin}>Already a user? Click to login!</a>
                 
+                {errmsg && <div className='registerError'>{errmsg}</div>}
+                
                 {error && <div className='registerError'>{error}</div>}
 
                 {loading && <Loading />}
-
 
                 <div className='container text-center'>
                     <button onClick = {handleSubmit} className="mt-3 newbtn">Register</button>

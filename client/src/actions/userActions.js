@@ -59,7 +59,7 @@ export const register = (email,password,name) => async (dispatch) => {
                 };
         
             const { data } = await axios.post(
-                
+                "/api/users/register",
                 { name, email, password },
                 config
             );
