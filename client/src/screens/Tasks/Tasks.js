@@ -23,9 +23,9 @@ const Tasks = () => {
     const taskDelete = useSelector((state) => state.taskDelete);
     const { success: successDelete, loading: loadingDelete } = taskDelete;
     const taskUpdate = useSelector((state) => state.taskUpdate);
-    const { success: successUpdate } = taskUpdate;
+    const { success: successUpdate, loading: loadingUpdate } = taskUpdate;
     const taskCreate = useSelector((state) => state.taskCreate);
-    const { success: successCreate } = taskCreate;
+    const { success: successCreate, loading: loadingCreate } = taskCreate;
 
 
 
@@ -104,7 +104,7 @@ const Tasks = () => {
           
           <br></br>
 
-          {loading && <Loading />}
+          {(loading || loadingUpdate || loadingCreate || loadingDelete) && <Loading />}
 
           { popped ? (<div><Popup popped={popped} isPopped={isPopped} poppedstatus={true}/></div>): ''}
           {isLogout && 
