@@ -30,11 +30,11 @@ export const taskListReducer = (state = { tasks: {} }, action) => {
 export const taskCreateReducer = (state = {}, action) => {
     switch (action.type) {
         case TASK_CREATE_REQUEST: 
-            return { createLoading: true };
+            return { loading: true };
         case TASK_CREATE_SUCCESS: 
-            return { createLoading: false, success: true };
+            return { loading: false, success: true };
         case TASK_CREATE_FAIL: 
-            return { createLoading: false, error: action.payload, success: false };
+            return { loading: false, error: action.payload, success: false };
         default:
             return state;
     }
@@ -47,7 +47,7 @@ export const taskDeleteReducer = (state = {}, action) => {
         case TASK_DELETE_SUCCESS: 
             return { loading: false, success: true };
         case TASK_DELETE_FAIL: 
-            return { loading: false, error: action.payload, success: false };
+            return { loading: false, error: action.payload, success : false };
         default:
             return state;
     }
@@ -56,11 +56,11 @@ export const taskDeleteReducer = (state = {}, action) => {
 export const taskUpdateReducer = (state = {}, action) => {
     switch (action.type) {
         case TASK_UPDATE_REQUEST: 
-            return { updateLoading: true };
+            return { loading: true };
         case TASK_UPDATE_SUCCESS: 
-            return { updateLoading: false, success: true };
+            return { loading: false, success: true };
         case TASK_UPDATE_FAIL: 
-            return { updateLoading: false, error: action.payload, success: false };
+            return { loading: false, error: action.payload, success: false };
         default:
             return state;
     }

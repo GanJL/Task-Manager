@@ -9,10 +9,6 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 
     const taskList = useSelector((state) => state.taskList);
     const { loading } = taskList;
-    const taskCreate = useSelector((state) => state.taskCreate);
-    const { createLoading } = taskCreate;
-    const taskUpdate = useSelector((state) => state.taskUpdate);
-    const { updateLoading } = taskUpdate;
 
     if (task === undefined) {
 
@@ -38,11 +34,11 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
         
         dispatch(createTaskAction(title, description, urgencyLevel, statusLevel))
 
-        if (!createLoading && !loading) {
-            isPopped(false)
-        }
+        // if (!loading) {
+        //     setTimeout(isPopped(false), 50000);
+        // }
         
-
+        isPopped(false)
     }
 
     const handleEdit = (event) => {
@@ -61,9 +57,11 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 
         dispatch(updateTaskAction(EditedTask,task._id,))
 
-        if (!updateLoading && !loading) {
-            isPopped(false)
-        }       
+        // if (!loading) {
+        //     setTimeout(isPopped(false), 50000);
+        // }       
+
+        isPopped(false)
 
     }
 
@@ -122,7 +120,7 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
                                         <button onClick={handleEdit} className="newbtn" >Update Task</button>}
                                     </div>
 
-                                    {(createLoading || updateLoading) && <Loading />}
+                                    {loading && <Loading />}
                                     
                                 </form>
                             </div>

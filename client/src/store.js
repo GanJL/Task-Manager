@@ -43,21 +43,21 @@ const middleware = [thunk];
 
 let store;
 
-if (process.env.NODE_ENV === "production") {
-    store = createStore(
-        reducer,
-        initialState,
-        compose(applyMiddleware(...middleware))
-    )
-}
+// if (process.env.NODE_ENV === "production") {
+//     store = createStore(
+//         reducer,
+//         initialState,
+//         compose(applyMiddleware(...middleware))
+//     )
+// }
 
-else {
+// else {
     store = createStore(
         reducer,
         initialState,
         composeWithDevTools(applyMiddleware(...middleware))
     );
-}
+// }
 
 // const persistor = persistStore(store)
 

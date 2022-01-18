@@ -10,22 +10,25 @@ import "../../styles/style.css";
 import logoutLogo from '../../icons/logout-svgrepo-com.svg';
 import addLogo from '../../icons/add-svgrepo-com.svg';
 import Footer from "../../components/Footer";
+import Loading from "../../components/Loading"
 
 const Tasks = () => {
 
     const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin
     const taskList = useSelector((state) => state.taskList);
+    const { tasks, loading } = taskList
     const [popped, isPopped] = useState(false);
     const [isLogout, setLogout] = useState(false);
     const taskDelete = useSelector((state) => state.taskDelete);
-    const { success: successDelete } = taskDelete;
+    const { success: successDelete, loading: loadingDelete } = taskDelete;
     const taskUpdate = useSelector((state) => state.taskUpdate);
     const { success: successUpdate } = taskUpdate;
     const taskCreate = useSelector((state) => state.taskCreate);
     const { success: successCreate } = taskCreate;
 
-    const { userInfo } = userLogin
-    const { tasks } = taskList
+
+
 
     const dispatch = useDispatch();
 
@@ -100,6 +103,9 @@ const Tasks = () => {
           </div>
           
           <br></br>
+
+          {loading && <Loading />}
+
           { popped ? (<div><Popup popped={popped} isPopped={isPopped} poppedstatus={true}/></div>): ''}
           {isLogout && 
             (<div className="popupBackground">
