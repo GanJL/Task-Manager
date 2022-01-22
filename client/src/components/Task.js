@@ -44,7 +44,7 @@ export default function Task(props) {
       
       <div className="wrapper mt-2 mb-2">
 
-        <div className="fs-7">{task.description}</div>
+        <div className="fs-7 taskDescription">{task.description}</div>
 
       </div>
 

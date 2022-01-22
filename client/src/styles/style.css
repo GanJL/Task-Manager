@@ -448,3 +448,10 @@ label {
 	height: 30px;
 	opacity: 0.7;
 }
+
+.taskDescription {
+	overflow: hidden;
+	max-height: 40px;
+	white-space:nowrap; 
+    text-overflow: ellipsis;
+}

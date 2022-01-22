@@ -57,9 +57,6 @@ export default function Popup({popped,isPopped,task,poppedstatus}) {
 
         dispatch(updateTaskAction(EditedTask,task._id,))
 
-        // if (!loading) {
-        //     setTimeout(isPopped(false), 50000);
-        // }       
 
         isPopped(false)
 

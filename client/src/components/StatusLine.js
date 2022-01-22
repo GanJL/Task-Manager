@@ -17,20 +17,22 @@ export default function StatusLine(props) {
   if (tasksForStatus) {
     taskList = tasksForStatus.map((task) => {
       return (
-        <Task
-          key={task._id}
-          task={task}
-        />
+        <div className="col-6">
+          <Task
+            key={task._id}
+            task={task}
+          />
+        </div>
       );
     });
   }
 
   return (
-    <div className="row">
+    <div className="">
       <div className="">   
           <h3 className="text-center text-nowrap">{status}</h3>
       </div> 
-      <div className="">
+      <div className="row">
           {taskList}
       </div>  
 
