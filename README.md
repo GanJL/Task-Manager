@@ -10,6 +10,10 @@
 
     * [Project Walkthrough](https://www.youtube.com/watch?v=rdK6Myjwhws&ab_channel=Gan)
 
+
+Uploading Task Manager - Google Chrome 2022-03-02 23-03-39.mp4…
+
+
 ### Implemented with the following tools:
 
 * MongoDB, ExpressJS, React, NodeJS
