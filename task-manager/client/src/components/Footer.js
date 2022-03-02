@@ -6,10 +6,10 @@ import user from "../icons/iconmonstr-user-20.svg"
 
 const Footer = () => {
 
-    const githubURL = "https://github.com/GanJL/Task-Manager-2"
+    const githubURL = "https://github.com/GanJL/Task-Manager"
     const instagramURL = "https://www.instagram.com/gan_jl/?hl=en"
     const mailURL = "mailto:gan.jianlin@gmail.com"
-    const meURL = "https://github.com/GanJL"
+    const meURL = "https://ganjianlin.com"
 
     return (
           <div className="container footer">
