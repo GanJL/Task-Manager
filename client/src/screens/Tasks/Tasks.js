@@ -121,9 +121,11 @@ const Tasks = () => {
             </div>)}
           </div> 
           <Footer />
+
       </div>
     )
 
 }
 
 export default Tasks
+
