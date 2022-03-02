@@ -80,13 +80,13 @@ const Tasks = () => {
   
           <div className="row">
 
-            <div className="col-md-4">
+            <div className="col-md-4 border-end border-secondary">
             <StatusLine
               tasks={tasks}
               status="Backlog"
             />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 border-end border-secondary">
             <StatusLine
               tasks={tasks}
               status="In Progress"
@@ -121,9 +121,11 @@ const Tasks = () => {
             </div>)}
           </div> 
           <Footer />
+
       </div>
     )
 
 }
 
 export default Tasks
+

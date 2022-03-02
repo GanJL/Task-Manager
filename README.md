@@ -10,6 +10,8 @@
 
     * [Project Walkthrough](https://www.youtube.com/watch?v=rdK6Myjwhws&ab_channel=Gan)
 
+    * 
+
 ### Implemented with the following tools:
 
 * MongoDB, ExpressJS, React, NodeJS
