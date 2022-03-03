@@ -3,7 +3,6 @@
 ### Overview:
 
 * A Task Manager App to replace the use of Windows Sticky Notes
-* Built on popular MERN stack for scalability and functionality
 * Check out the project:
 
     * [Project Site](https://task-manager-ganjl.herokuapp.com/)
@@ -14,20 +13,31 @@
 
     * ![Alt Text](https://github.com/GanJL/Task-Manager/blob/main/task-manager/client/src/icons/Task%20Manager%20-%20Google%20Chrome%202022-03-02%2023-03-39.gif?raw=true)
 
-### Implemented with the following tools:
+### Implemented with the following technologies:
 
-* MongoDB, ExpressJS, React, NodeJS
-    * Frontend/backend development
-* BcryptJS
-    * Password Management
-* JWT 
-    * Authorization 
-* React Redux 
-    * Statement Management
-* Bootstrap
-    * Styling
-* Heroku
-    * Deployment
+* Front-end
+    * [React](https://redux.js.org/introduction/getting-started) - Front-end framework
+    * [Redux w/ hooks](https://redux.js.org/introduction/getting-started) - State Management Library
+    * [Redux Thunk](https://github.com/reduxjs/redux-thunk) - Middleware which allows action creators to return a function
+    * [React Router](https://reactrouter.com/) - Library for routing and navigation
+    * [Bootstrap](https://getbootstrap.com/) - General styling
+
+* Back-end
+    * [Node.js](https://nodejs.org/en/) - Runtime environment for JavaScript
+    * [Express.js](https://expressjs.com/) - Enhance Node.js features
+    * [MongoDB](https://www.mongodb.com/) - NoSQL database to store data
+    * [JSON Web Token](https://jwt.io/) - Open standard for securing information transmission
+    * [Bcrypt.js](https://www.npmjs.com/package/bcryptjs) - Hash and decrypt passwords
+    * [Dotenv](https://www.npmjs.com/package/dotenv) - Load environment variables
+
+### Features:
+
+* Authentication (Login/ Register)
+* CRUD tasks into different task urgencies
+* Descriptive color indicators for task status
+* Modal popups to notify/perform actions: creating tasks, delete tasks and logout
+* Loading spinners for fetching processes
+* Proper responsive UI for all screens
 
 ### Instructions for testing:
 
