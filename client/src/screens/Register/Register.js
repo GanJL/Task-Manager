@@ -44,11 +44,6 @@ const Register = () => {
 
             dispatch(register(email, password, name))
 
-            // setTimeout(() => {navigate("/mytasks")}, 250)
-
-            // if (loading) {
-            //     navigate("/")
-            // }
         }
     }
 
@@ -64,7 +59,6 @@ const Register = () => {
                     <label className='registerLabel'>Name</label>
                     <input
                         type="text"
-                        className=""
                         name="name"
                         placeholder="Enter Name (Max 20 Characters)"
                         onChange={e => setName(e.target.value)}
@@ -75,7 +69,6 @@ const Register = () => {
                     <label className='registerLabel'>Email</label>      
                     <input
                         type="text"
-                        className=""
                         name="email"
                         placeholder="Enter Email"
                         onChange={e => setEmail(e.target.value)}
@@ -85,7 +78,6 @@ const Register = () => {
                     <label className='registerLabel'>Password</label>    
                     <input
                         type="password"
-                        className=""
                         name="password"
                         placeholder="Enter Password (Min 6 Characters)"
                         onChange={e => setPassword(e.target.value)}
@@ -95,7 +87,6 @@ const Register = () => {
                     <label className='registerLabel'>Confirm Password</label>
                     <input
                         type="password"
-                        className=""
                         name="confirmpassword"
                         placeholder="Confirm Password"
                         onChange={e => setConfirmPassword(e.target.value)}
@@ -103,7 +94,7 @@ const Register = () => {
                         className="registerInput"
                         />
 
-                <a href='' className="reRouteLogin" onClick={reRouteLogin}>Already a user? Click to login!</a>
+                <a className="reRouteLogin" onClick={reRouteLogin}>Already a user? Click to login!</a>
                 
                 {errmsg && <div className='registerError'>{errmsg}</div>}
                 

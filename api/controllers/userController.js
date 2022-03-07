@@ -4,13 +4,15 @@ const User = require('../models/users');
 
 const generateToken = require('../utils/generateToken');
 
+// controller to handle requests from routes (users)
+
+// authenticates user
 const authUser = asyncHandler(async (req, res) => {
 
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     
-
         if (user && (await user.matchPassword(password))) {
 
             res.json({
@@ -29,7 +31,7 @@ const authUser = asyncHandler(async (req, res) => {
         }
     
 })
-
+// registers user
 const registerUser = asyncHandler(async (req, res) => {
 
     const { name, email, password} = req.body;

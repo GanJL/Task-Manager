@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+// a schema based solution to model data 
+
 
 const Schema = mongoose.Schema;
 

@@ -1,5 +1,8 @@
 const asyncHandler = require('express-async-handler')
+// pass on errors into res instead of doing try/catch
 const Task = require('../models/tasks');
+
+// controller to handle requests from routes (tasks)
 
 const getTasks = asyncHandler(async (req, res) => {
 

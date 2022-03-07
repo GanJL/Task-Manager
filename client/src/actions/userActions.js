@@ -9,6 +9,8 @@ import { USER_LOGIN_FAIL,
 
 import axios from "axios";
 
+// dispatch actions to reducers, which will manipulate store
+
 export const login = (email, password) => async (dispatch) => {
 
     try {

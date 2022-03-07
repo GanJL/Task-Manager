@@ -1,4 +1,6 @@
 const express = require('express');
+// express routers to make routes
+
 const router = express.Router();
 const { protect } = require('../middleware/authMiddleware')
 

@@ -43,6 +43,8 @@ const Tasks = () => {
       dispatch(listTasks());
 
     }, [dispatch, userInfo, navigate, successDelete, successCreate, successUpdate]);
+    // stores the dependencies which if changed will activate useEffect
+
 
     const handleLogout = async (event) => {
         

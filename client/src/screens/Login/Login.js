@@ -9,11 +9,13 @@ const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // useSelector to retrieve state from store
     const userLogin = useSelector((state) => state.userLogin);
+    // retrieve specific objects from state payload
     const { loading, userInfo, error } = userLogin
 
     useEffect(()=>{
@@ -44,7 +46,6 @@ const Login = () => {
                 <label className='registerLabel'>Email</label>
                 <input
                     type="text"
-                    className=""
                     name="email"
                     placeholder="Enter Email"
                     onChange={e => setEmail(e.target.value)}
@@ -54,7 +55,6 @@ const Login = () => {
                 <label className='registerLabel'>Password</label>
                 <input
                     type="password"
-                    className=""
                     name="password"
                     placeholder="Enter Password"
                     onChange={e => setPassword(e.target.value)}
@@ -62,7 +62,7 @@ const Login = () => {
                     className="registerInput"
                     />
 
-                <a href='' className="reRouteLogin" onClick={reRouteRegister}>Need an account? Click to register!</a>
+                <a className="reRouteLogin" onClick={reRouteRegister}>Need an account? Click to register!</a>
 
                 {error && <div className='registerError'>{error}</div>}
 

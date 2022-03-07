@@ -26,11 +26,13 @@ const userSchema = mongoose.Schema(
   timestamps: true,
 });
 
+// create schema method "matchPassword for use in controller"
 userSchema.methods.matchPassword = async function (enteredPassword) {
   
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
+// hash passwords for user with salt
 userSchema.pre('save', async function (next) {
 
     if (!this.isModified('password')) {

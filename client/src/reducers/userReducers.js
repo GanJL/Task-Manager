@@ -7,11 +7,14 @@ import { USER_LOGIN_FAIL,
     USER_REGISTER_SUCCESS 
 } from "../constants/userConstants"
 
+// based on the specific actions, reducer will manipulate store state according
+
 export const userLoginReducer = (state={}, action) => {
     switch (action.type) {
         case USER_LOGIN_REQUEST: 
             return { loading: true };
         case USER_LOGIN_SUCCESS: 
+            // return loading and userInfo to store state
             return { loading: false, userInfo: action.payload };
         case USER_LOGIN_FAIL: 
             return { loading: false, error: action.payload };
