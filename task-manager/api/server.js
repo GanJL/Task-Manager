@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes')
 const taskRoutes = require('./routes/taskRoutes')
 const path = require('path');
-const { errorHandler, notFound } = require('./middleware/errorMiddleware.js')
+
 
 require('dotenv').config();
 
@@ -32,6 +32,8 @@ app.use('/api/tasks', taskRoutes);
 
 // --------------------------deployment------------------------------
 
+// serve static client with backend server
+
 const __dirname1 = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
@@ -46,9 +48,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // --------------------------deployment------------------------------
-
-app.use(notFound);
-app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000; 
 

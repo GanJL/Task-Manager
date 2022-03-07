@@ -10,3 +10,5 @@ export const TASK_DELETE_FAIL= "TASK_DELETE_FAIL";
 export const TASK_UPDATE_REQUEST = "TASK_UPDATE_REQUEST";
 export const TASK_UPDATE_SUCCESS = "TASK_UPDATE_SUCCESS";
 export const TASK_UPDATE_FAIL= "TASK_UPDATE_FAIL";
+
+// redux constants keep action type names consistent

@@ -1,5 +1,7 @@
 const JWT = require("jsonwebtoken")
 
+// generates JWT token with encrypted id information 
+
 const generateToken = (id) => {
 
     return JWT.sign({

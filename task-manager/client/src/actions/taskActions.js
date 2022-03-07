@@ -15,22 +15,28 @@ import { TASK_LIST_FAIL,
 
 import axios from "axios";
 
+// dispatch actions to reducers, which will manipulate store
+
 export const listTasks = () => async (dispatch, getState) => {
 
     try {
 
+          // dispatch action type to reducer to set loading state to true
           dispatch({ type: TASK_LIST_REQUEST });
    
+          // get userInfo state from store
           const { userLogin: {userInfo}, } = getState()
 
+          
           const config = {
             headers: {
               Authorization: `Bearer ${userInfo.token}`,
             },
           };
-      
+          // authenticate with JWT obtained from userInfo and pass on HTTP request header
           const { data } = await axios.get(`/api/tasks`, config);
 
+          // dispatch action type with payload 'data' to reducer, which will save in store
           dispatch({ type: TASK_LIST_SUCCESS, payload: data })
 
         }

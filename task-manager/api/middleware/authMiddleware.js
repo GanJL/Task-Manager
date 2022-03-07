@@ -1,6 +1,9 @@
 const JWT = require("jsonwebtoken")
 const User = require("../models/users")
 const asyncHandler = require("express-async-handler");
+
+// middleware to ensure route is authorised based on JWT retrieved from HTTP headers
+
 const protect = asyncHandler(async (req, res, next) => {
 
   let token;
