@@ -70,7 +70,9 @@ const Login = () => {
 
                 <div className='container text-center'>
                     <button onClick = {handleSubmit} className="mt-3 newbtn">Login</button>
-
+                </div>
+                <div className='mt-3'>
+                    <span className='text-muted fs-6'>Test Account: Email: test_account@gmail.com | Password: test123</span>
                 </div>
 
             </form>
